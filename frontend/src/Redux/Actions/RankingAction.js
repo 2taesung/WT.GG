@@ -2,11 +2,11 @@
 // 찐 Action ㄴㄴ
 // 사용전에 다 지우기
 
-const RANKING = "RANKING";
+import RANKING from '../Type/RankingType';
 
 const Ranking = (text) => {
   return {
-    type: RANKING,
+    rankType: RANKING,
     payload: text
   };
 };
