@@ -10,6 +10,7 @@ import Test from './Components/Test/Test';
 import Ranking from './Components/Ranking/Ranking';
 import Result from './Components/Result/Result';
 import NotFound from './Components/NotFound/NotFound';
+import Nav from "./Components/Navigation/Nav";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -17,6 +18,7 @@ import './App.css';
 function App() {
   return (
     <BrowserRouter>
+      <Route component={Nav} />
       <Switch>
         <Route path="/" component={Main} exact={true} />
         <Route path="/board" component={Board} exact={true} />

@@ -1,0 +1,28 @@
+.nav {
+  position: fixed;
+  top: 0;
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  margin: 2rem 0 2rem 3rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #6ECB63;
+}
+
+#nav-dropdown-basic {
+  color: #C4C4C4;
+  margin-right: 3rem;
+}
+
+#nav-dropdown-basic::after {
+  display: none;
+}
+
+.logo {
+  text-decoration: none;
+}
