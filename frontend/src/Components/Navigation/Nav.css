@@ -5,6 +5,7 @@
   width: 100vw;
   justify-content: space-between;
   align-items: center;
+  z-index: 5;
 }
 
 .nav-logo {
@@ -21,6 +22,11 @@
 
 #nav-dropdown-basic::after {
   display: none;
+}
+
+.dropdown-menu {
+  border-radius: 10px !important;
+  border: 2px solid #B1E693 !important;
 }
 
 .logo {
