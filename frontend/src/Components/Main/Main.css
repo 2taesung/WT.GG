@@ -25,13 +25,13 @@
 }
 
 .main-top-bg {
-  /* width: 100%; */
   display: flex;
   justify-content: flex-end;
 }
 
 #main-img {
   height: 60vh;
+  /* width: 60vw; */
   width: 100%;
   padding-left: 15%;
   animation-duration: 5s;
@@ -101,7 +101,7 @@
 }
 
 .main-category-img {
-  height: 30vh;
+  height: 20vh;
 }
 
 .main-category-right {
@@ -132,4 +132,127 @@
 
 .main-btn:hover {
   background-color: #B1E693;
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+  #main-img {
+    padding: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    height: 100vh;
+    margin: 0 3rem;
+    padding-top: 3rem;
+    justify-content: space-evenly;
+  }
+
+  .main-top {
+    width: auto;
+    margin-bottom: 0;
+  }
+  
+  .flower-img {
+    height: 40vh;
+  }
+  
+  .main-top-text {
+    position: relative;
+    height: 15vh;
+  }
+
+  .main-top-text h1{
+    font-size: 2rem;
+  }
+
+  .main-top-text h3 {
+    font-size: 1.25rem;
+  }
+
+  #main-img {
+    height: 25vh;
+  }
+
+  .main-bottom {
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly
+  }
+
+  .main-categories {
+    justify-content: space-between;
+  }
+
+  .main-category-1,
+  .main-category-2,
+  .main-category-3 {
+    font-size: 1.25rem;
+  }
+
+  .main-category-img {
+    height: 12.5vh;
+  }
+  
+  .main-content {
+    flex-direction: column;
+    margin: 1.5rem;
+  }
+
+  .main-category-right {
+    height: auto;
+  }
+
+  .main-category-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0;
+  }
+
+  .main-category-title {
+    font-size: 1.5rem;
+  }
+
+  .main-category-content {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .main {
+    height: 100vh;
+    margin: 0 1rem;
+    padding-top: 3rem;
+    justify-content: space-evenly;
+  }
+
+  .main-top-text h1 {
+    font-size: 1.25rem;
+  }
+
+  .main-top-text h3 {
+    font-size: 1rem;
+  }
+
+  .main-category-1,
+  .main-category-2,
+  .main-category-3 {
+    font-size: 0.9rem;
+  }
+
+  .main-category-title {
+    font-size: 1.25rem;
+  }
+
+  .main-category-content {
+    font-size: 0.9rem;
+  }
+
+  .main-btn h4 {
+    font-size: 1rem;
+  }
 }
