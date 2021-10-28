@@ -41,9 +41,6 @@ function Main() {
         <div className="flower">
           <img className="flower-img" src={flower} alt ="flower" />
         </div>
-        <div className="main-top-bg">
-          <img id="main-img" src={main_img} alt="메인이미지" />
-        </div>
         <div className="main-top-text">
           <h1>만화 보고 가지 않을래?</h1>
           <h3>
@@ -52,6 +49,9 @@ function Main() {
             SERVICE<br/>
           </h3>
         </div>
+        <div className="main-top-bg">
+          <img id="main-img" src={main_img} alt="메인이미지" />
+        </div>        
       </div>
 
       <div className="main-bottom">

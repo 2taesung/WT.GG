@@ -32,3 +32,28 @@
 .logo {
   text-decoration: none;
 }
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .nav-logo {
+    margin: 1rem 0 1rem 3rem;
+    font-size: 1.5rem;
+  }
+
+  #nav-dropdown-basic {
+    margin-right: 3rem;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .nav-logo {
+    margin: 1rem 0 1rem 1rem;
+    font-size: 1.25rem;
+  }
+
+  #nav-dropdown-basic {
+    margin-right: 1rem;
+    padding-right: 0;
+  }
+}

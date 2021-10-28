@@ -11,9 +11,9 @@ function MainCategory3() {
         <img src={img} alt="MBTI" className="main-category-img" />
       </div>
       <div className="main-category-right">
-        <div>
+        <div className="main-category-text">
           <h2 className="main-category-title">웹툰 MBTI</h2>
-          <h5>나와 맞는 웹툰은 무엇일까요?</h5>
+          <h5 className="main-category-content">나와 맞는 웹툰은 무엇일까요?</h5>
         </div>
         <Link to="/test">
           <button className="main-btn"><h4>Go to Recommend</h4></button>
