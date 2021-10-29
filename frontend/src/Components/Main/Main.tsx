@@ -13,24 +13,28 @@ function Main() {
   const dispatch = useDispatch();
 
   // 카테고리 변경
+  const changeCategory = () => {
+    if (mainCategory === "Ranking") {
+      document.querySelector(".main-category-chk")?.classList.remove("main-category-chk")
+      document.querySelector(".main-category-1")?.classList.add("main-category-chk")
+    }
+    else if (mainCategory === "Community") {
+      document.querySelector(".main-category-chk")?.classList.remove("main-category-chk")
+      document.querySelector(".main-category-2")?.classList.add("main-category-chk")
+    }
+    else {
+      document.querySelector(".main-category-chk")?.classList.remove("main-category-chk")
+      document.querySelector(".main-category-3")?.classList.add("main-category-chk")
+    }
+  }
+
+  changeCategory()
+
+  // 카테고리 클릭
   const clickCategory = (e: any) => {
     dispatch(ChkCategory(e.target.innerText))
+    changeCategory()
   }
-
-  if (mainCategory === "Ranking") {
-    document.querySelector(".main-category-chk")?.classList.remove("main-category-chk")
-    document.querySelector(".main-category-1")?.classList.add("main-category-chk")
-  }
-  else if (mainCategory === "Community") {
-    document.querySelector(".main-category-chk")?.classList.remove("main-category-chk")
-    document.querySelector(".main-category-2")?.classList.add("main-category-chk")
-  }
-  else {
-    document.querySelector(".main-category-chk")?.classList.remove("main-category-chk")
-    document.querySelector(".main-category-3")?.classList.add("main-category-chk")
-  }
-
-  // console.log(mainCategory)
 
   const main_img = "/image/main_img.png"
   const flower = "/image/flower.gif";
@@ -56,9 +60,27 @@ function Main() {
 
       <div className="main-bottom">
         <div className="main-categories">
-          <h3 className="main-category-1 main-category-chk" onClick={clickCategory}>Ranking</h3>
-          <h3 className="main-category-2" onClick={clickCategory}>Community</h3>
-          <h3 className="main-category-3" onClick={clickCategory}>Recommend</h3>
+          {mainCategory === "Ranking" ? (
+            <>
+              <h3 className="main-category main-category-chk" onClick={clickCategory}>Ranking</h3>
+              <h3 className="main-category" onClick={clickCategory}>Community</h3>
+              <h3 className="main-category" onClick={clickCategory}>Recommend</h3>
+            </>
+          ) : null}
+          {mainCategory === "Community" ? (
+            <>
+              <h3 className="main-category" onClick={clickCategory}>Ranking</h3>
+              <h3 className="main-category main-category-chk" onClick={clickCategory}>Community</h3>
+              <h3 className="main-category" onClick={clickCategory}>Recommend</h3>
+            </>
+          ) : null}
+          {mainCategory === "Recommend" ? (
+            <>
+              <h3 className="main-category" onClick={clickCategory}>Ranking</h3>
+              <h3 className="main-category" onClick={clickCategory}>Community</h3>
+              <h3 className="main-category main-category-chk" onClick={clickCategory}>Recommend</h3>
+            </>
+          ) : null}          
         </div>
         <div className="main-contents">
           {mainCategory === "Ranking" ? (
