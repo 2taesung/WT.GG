@@ -1,0 +1,87 @@
+.not-found {
+  margin-top: 15vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JSArirangHON-Regular';
+  overflow-x: hidden;
+}
+
+.not-found h1 {
+  font-weight: bold;
+}
+
+.not-found-mid {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+#not-found-img {
+  height: 50vh;
+}
+
+#not-found-img-text {
+  position: absolute;
+  top: 80%;
+  color: #EC9CD3;
+}
+
+.not-found-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 반응형 */
+
+@media (max-width: 1024px) {
+  .not-found h1 {
+    font-size: 3rem;
+  }
+
+  .not-found h5 {
+    font-size: 2.5rem;
+  }
+
+  #not-found-img-text {
+    font-size: 2rem;
+  }
+  
+  /* .not-found-bottom {
+    margin-top: 10rem;
+  } */
+}
+
+@media (max-width: 992px) {
+  .not-found h1 {
+    font-size: 3rem;
+  }
+
+  .not-found h5 {
+    font-size: 2rem;
+  }
+
+  #not-found-img-text {
+    font-size: 1.8rem;
+  }   
+}
+
+@media (max-width: 768px) {
+  .not-found h1 {
+    font-size: 1.8rem;
+  }
+
+  .not-found h5 {
+    font-size: 1rem;
+  }
+
+  #not-found-img-text {
+    font-size: 1rem;
+  }   
+}
