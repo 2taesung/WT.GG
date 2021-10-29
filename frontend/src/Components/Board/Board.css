@@ -8,13 +8,13 @@
 }
 
 @media screen and (max-width: 700px) {
-    th, td, .page-link, .smallBtn, .platform-select, .webtoon-select {
+    td, .page-link, .small-btn, .platform-select, .webtoon-select {
         font-size: 0.75rem;
     }
-    .searchGroup {
+    .search-group {
         visibility: hidden;
     }
-    .smallBtn {
+    .small-btn {
         padding: 0.05rem 0.05rem;
     }
     .form-select-sm {
@@ -25,22 +25,18 @@
     }
   }
 
-h2 {
+.board-header {
     text-align: center;
     color: var(--main-bg-color);
     margin-bottom: 40px;
 }
 
-input {
+.form-control {
     border-radius:  var(--main-border-radius);
 }
 
-table {
+.table {
     text-align: center;
-}
-
-textarea {
-    border-radius:  var(--main-border-radius);
 }
 
 a {
@@ -91,7 +87,7 @@ td a {
     margin-right: 3px;
 }
 
-.boardTitle {
+.board-title {
     width: 60%;
 }
 
@@ -100,11 +96,11 @@ td a {
     justify-content: flex-end;
 }
 
-.smallBtn {
+.small-btn {
     padding: .1rem 0.375rem;
 }
 
-.leftBtn {
+.left-btn {
     margin-right: 3px;
 }
 
@@ -134,48 +130,49 @@ td a {
     
   }
 
-.detailTitle {
+.detail-title {
     border-bottom: 1px solid #DBD5D5;
     display: flex;
     justify-content: space-between;
     padding-bottom: 3px;
 }
 
-.detailContent {
+.detail-content {
     height: 320px;
 }
 
-.detailComment {
+.detail-comment {
     border-top: 1px solid #DBD5D5;
 }
 
-.commentTable {
+.comment-table {
     display: flex;
     justify-content: space-between;
 }
 
-.commentWriter {
+.comment-writer {
     flex-grow: 1;
 }
 
-.commentContent {
+.comment-content {
     flex-grow: 5;
 }
 
-.createComment {
+.create-comment {
     border: 1px solid #DBD5D5;
     width: 100%;
     padding: 0.5rem;
 }
 
-.wrapBtn {
-    display: flex;
-    justify-content: flex-end;
-}
-
-textarea {
+.comment-textarea {
+    border-radius:  var(--main-border-radius);
     width: 98%;
     border: 0;
+}
+
+.wrap-btn {
+    display: flex;
+    justify-content: flex-end;
 }
 
 /* boardCreate */
@@ -185,11 +182,14 @@ textarea {
     justify-content: flex-start;
 }
 
-.createInput {
+.create-input {
     background-color: #F9F4F4;
     border-width: 0px;
 }
 
-.createPost {
+.create-post {
     height: 320px;
+    border-radius:  var(--main-border-radius);
+    width: 98%;
+    border: 0;
 }

@@ -9,12 +9,12 @@ import BoardSelectbox from "./BoardSelectbox";
 function Board() {
   return (
     <div>
-      <h2>Board</h2>
+      <h2 className="board-header">Board</h2>
       <hr />
       <div className="header">
         <BoardSelectbox />
         <span>
-        <InputGroup className="searchGroup">
+        <InputGroup className="search-group">
           <FormControl
             placeholder="search"
           />
@@ -31,26 +31,26 @@ function Board() {
     <tr>
       <td>네이버</td>
       <td>만화1</td>
-      <td className="boardTitle"> <Link to="/board/detail"> title </Link> <Badge pill text="dark">9</Badge> </td>
+      <td className="board-title"> <Link to="/board/detail"> title </Link> <Badge pill text="dark">9</Badge> </td>
       <td>00:00</td>
     </tr>
     <tr>
     <td>다음</td>
     <td>만화2</td>
-    <td className="boardTitle">title2 <Badge pill text="dark">4</Badge></td>
+    <td className="board-title">title2 <Badge pill text="dark">4</Badge></td>
       <td>10:00</td>
     </tr>
     <tr>
     <td>레진</td>
     <td>만화3</td>
-    <td className="boardTitle">title3 <Badge pill text="dark">2</Badge></td>
+    <td className="board-title">title3 <Badge pill text="dark">2</Badge></td>
       <td>11:11</td>
     </tr>
   </tbody>
 </table>
   <div className="btns">
-    <Button className="leftBtn smallBtn"> <Link to="/board/create"> 글쓰기 </Link></Button>
-    <Button className="smallBtn">내 글 보기</Button>
+    <Button className="left-btn small-btn"> <Link to="/board/create"> 글쓰기 </Link></Button>
+    <Button className="small-btn">내 글 보기</Button>
   </div>
 
   <Pagination>

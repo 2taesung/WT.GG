@@ -5,17 +5,17 @@ import BoardSelectbox from './BoardSelectbox';
 function BoardCreate() {
   return (
     <div>
-      <h2>Board</h2>
+      <h2 className="board-header">Board</h2>
       <hr />
       <div className="header-create">
       <BoardSelectbox/>
-      <input type="text" name="title" placeholder="제목을 입력하세요" className="mx-5 createInput"></input>
+      <input type="text" name="title" placeholder="제목을 입력하세요" className="mx-5 create-input"></input>
       </div>
       <hr />
-      <textarea className="createInput createPost"></textarea>
+      <textarea className="create-input create-post"></textarea>
       <div className="btns mt-3">
-      <Button className="leftBtn smallBtn">이미지 첨부하기</Button>
-      <Button className="smallBtn">작성하기</Button>
+      <Button className="left-btn small-btn">이미지 첨부하기</Button>
+      <Button className="small-btn">작성하기</Button>
       </div>
     </div>
   )
