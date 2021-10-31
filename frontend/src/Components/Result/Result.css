@@ -1,0 +1,36 @@
+.s_img {
+  width: 300px;
+  height: 300px;
+}
+.card {
+  color: aliceblue;
+  border-radius: 30px;
+  width: 600px;
+  height: 970.8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gage {
+  background-color: #EC9CD3;
+  width: 300px;
+  height: 10px;
+}
+
+.Q {
+  color: black;
+}
+
+.a {
+  background-color: #EC9CD3;
+  color: aliceblue;
+  width: 300px;
+  height: 100px;
+}
+
+
+
+h2 {
+  color: aliceblue;
+}
