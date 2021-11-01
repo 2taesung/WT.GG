@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="com.web.webtoon.model.dao.BoardDao">
+
+	<select id="getAllList" resultType="BoardContent">
+		select * from board;
+	</select>
+	
+	<select id="getBoardContent" parameterType="int" resultType="BoardContent">
+		select * from board 
+		where id=#{id};
+	</select>
+
+</mapper>
