@@ -4,7 +4,7 @@ import BoardSelectbox from './BoardSelectbox';
 
 function BoardCreate() {
   return (
-    <div>
+    <div className="content-wrapper">
       <h2 className="board-header">Board</h2>
       <hr />
       <div className="header-create">

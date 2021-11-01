@@ -8,7 +8,7 @@ import BoardSelectbox from "./BoardSelectbox";
 
 function Board() {
   return (
-    <div>
+    <div className="content-wrapper">
       <h2 className="board-header">Board</h2>
       <hr />
       <div className="header">

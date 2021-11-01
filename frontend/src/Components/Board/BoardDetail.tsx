@@ -4,16 +4,16 @@ import "./Board.css";
 
 function BoardDetail() {
   return (
-    <div>
+    <div className="content-wrapper">
       <h2 className="board-header">Board</h2>
       <hr />
       <div className="detail-title">
         <span className="platform-and-title">
           <span className="detail-platform mx-3">플랫폼1</span>
           <span className="detail-webtoon-title">만화제목2</span>
-          <span className=" mx-5">title1</span>
+          <span>title1</span>
         </span>
-        <span className="btns">
+        <span className="btns detail-btns">
           <Button className="mx-2 small-btn">수정</Button>
           <Button className="small-btn">삭제</Button>
         </span>
