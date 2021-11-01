@@ -8,9 +8,7 @@
 
 .flower {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  width: 85%;
 }
 
 .flower-img {
@@ -31,7 +29,6 @@
 
 #main-img {
   height: 60vh;
-  /* width: 60vw; */
   width: 100%;
   padding-left: 15%;
   animation-duration: 5s;
@@ -141,13 +138,15 @@
   .main {
     height: 100vh;
     margin: 0;
-    padding-top: 3rem;
+    padding-top: 5vh;
+    align-items: center;
+    height: 100vh;
     justify-content: space-evenly;
   }
 
   .main-top {
     width: auto;
-    margin-bottom: 0;
+    margin: 0 2rem;
   }
   
   .flower-img {
@@ -218,12 +217,12 @@
 }
 
 @media (max-width: 576px) {
-  .main {
+  /* .main {
     height: auto;
     margin: 0;
     padding-top: 8vh;
     justify-content: space-evenly;
-  }
+  } */
 
   .main-top-text h1 {
     font-size: 1.25rem;
@@ -234,7 +233,7 @@
   }
 
   .main-category {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 
   .main-category-title {
