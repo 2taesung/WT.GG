@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import './slickstyle.css'; 
 import './slick-theme.css';
 import './Test.css';
+import TestCard from './TestCard';
 
 
 export default class SimpleSlider extends Component {
@@ -15,10 +16,11 @@ export default class SimpleSlider extends Component {
       slidesToScroll: 1
     };
     return (
-      <div className="bg">
+      <div className="Test-bg">
         <Slider {...settings}>
           <div>
             <h3>1</h3>
+            <TestCard></TestCard>
           </div>
           <div>
             <h3>2</h3>

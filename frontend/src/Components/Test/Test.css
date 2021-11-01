@@ -1,7 +1,4 @@
-
-
-.bg {
-  border: 10px solid black;
+.Test-bg {
   background-color: #f3bfe3;
   /* z-index: -1;
   position: absolute; */
@@ -12,25 +9,12 @@
   height: 1000px;
 
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
 }
 
-.card {
-  color: aliceblue;
-  border-radius: 30px;
-  width: 600px;
-  height: 970.8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.gage {
-  background-color: #EC9CD3;
-  width: 300px;
-  height: 10px;
-}
+
 
 .Q {
   color: black;
@@ -45,6 +29,3 @@
 
 
 
-h2 {
-  color: aliceblue;
-}
