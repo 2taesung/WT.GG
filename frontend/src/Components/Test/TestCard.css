@@ -1,0 +1,25 @@
+.TestCard-Card {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.TestCard-Card {
+  display: flex;
+  align-items: center;
+
+}
+.Question {
+  font-size: 20px;
+}
+
+.Answer {
+  width: 200px;
+  height: 50px;
+  background-color: #EC9CD3;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
