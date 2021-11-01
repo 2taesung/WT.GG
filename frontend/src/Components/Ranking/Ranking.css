@@ -1,0 +1,123 @@
+.ranking-header {
+  margin: 3rem 3rem 0 3rem;
+}
+
+.ranking-header h2 {
+  text-align: center;
+  color: var(--main-bg-color);
+  margin-bottom: 40px;
+}
+
+.ranking-title {
+  margin: 1rem 3rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ranking-category h3 {
+  color: var(--main-bg-color);
+  font-weight: bold;
+}
+
+.ranking-content {
+  box-shadow: 5px 5px 5px gray;
+  border-radius: 5px;
+  margin: 1rem 0;
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+
+.ranking-rank {
+  display: flex;
+  justify-content: center;
+}
+
+.ranking-rank h5,
+.ranking-score h5,
+.ranking-wi,
+.ranking-body h5,
+.fb {
+  font-weight: bold;
+}
+
+.ranking-wi {
+  color: #989898;
+  margin: 0.7rem 0;
+}
+
+.ranking-img {
+  height: 5rem;
+  width: 5rem;
+  background-color: aliceblue;
+}
+
+.ranking-wi,
+.ranking-body,
+.ranking-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ranking-content:hover {
+  cursor: pointer;
+  background-color: #B1E693;
+}
+
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .ranking {
+    font-size: 1.25rem;
+  }
+
+  .ranking h5 {
+    font-size: 1.75rem;
+  }
+    
+  .ranking-rank h5 {
+    font-size: 2rem;
+  }
+
+  .ranking-content {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 150%;
+    padding: 1rem;
+    margin: 2rem 2.5rem;
+  }
+
+  .ranking-body {
+    width: 100%;
+  }
+
+  .ranking-img {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
+  .ranking-score {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .ranking {
+    font-size: small;
+  }
+
+  .ranking h5 {
+    font-size: 1rem;
+  }
+
+  .ranking-rank h5 {
+    font-size: 1.5rem;
+  }
+
+  .ranking-img {
+    width: 4rem;
+    height: 4rem;
+  }
+}
