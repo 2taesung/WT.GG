@@ -28,7 +28,7 @@ function App() {
         <Route path="/board/:id" component={BoardDetail} exact={true} />
         <Route path="/board/:id/update" component={BoardUpdate} exact={true} />
         <Route path="/board/result" component={BoardCreate} exact={true} />
-        <Route path="/result" component={Result} exact={true} />
+        <Route path="/result/:id" component={Result} exact={true} />
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>

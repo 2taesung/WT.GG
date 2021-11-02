@@ -1,36 +1,122 @@
-.s_img {
-  width: 300px;
-  height: 300px;
+.result {
+  margin: 6rem 3rem 0 3rem;
 }
-.card {
-  color: aliceblue;
-  border-radius: 30px;
-  width: 600px;
-  height: 970.8px;
+
+.result-top {
+  height: 40vh;
   display: flex;
-  justify-content: center;
+  width: 100%;
+  justify-content: space-evenly;
   align-items: center;
 }
 
-.gage {
+#result-webtoon-img {
+  background-color: lightgray;
+  width: 35vh;
+  height: 35vh;
+}
+
+.result-top-right {
+  width: 40vw;
+  height: 35vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.result-top-right h3 {
+  font-weight: bold;
+}
+
+.result-btns {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.result-btn {
   background-color: #EC9CD3;
-  width: 300px;
-  height: 10px;
+  color: #fff;
+  border-style: none;
+  border-radius: 18px;
+  padding: 0.5rem 1.5rem;
 }
 
-.Q {
-  color: black;
+.result-btn h5 {
+  margin: 0;
 }
 
-.a {
-  background-color: #EC9CD3;
-  color: aliceblue;
-  width: 300px;
-  height: 100px;
+.result-btn:hover {
+  cursor: pointer;
+  background-color: #B1E693;
+}
+
+.result-bottom-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+.result-avatar {
+  background-color: lightgray;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+}
+
+.result-bottom-right {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  margin: 0;
+}
+
+.result-bottom-contents {
+  display: flex;
+  width: 40vw;
+  align-items: center;
+}
+
+.result-bottom-title {
+  display: flex;
+  justify-content: center;
+}
+
+.result-chk {
+  height: 2rem;
+}
+
+.result-hr {
+  width: 30vw;
+  height: 0.2rem;
+  background-color: black;
 }
 
 
+/* 반응형 */
+@media (max-width: 768px) {
+  .result {
+    margin: 0;
+  }
 
-h2 {
-  color: aliceblue;
+  .result-top {
+    flex-direction: column;
+  }
+
+  #result-webtoon-img {
+    width: 25vh;
+    height: 25vh;
+  }
+
+  .result-avatar {
+    width: 25vw;
+    height: 25vw;
+  }
+
+  .result-btns {
+    display: none;
+  }
 }
