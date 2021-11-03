@@ -13,5 +13,21 @@
 		select * from board 
 		where id=#{id};
 	</select>
+	
+	<insert id="insertBoardContent" parameterType="Map">
+		insert into board(ip_no, platform_id, webtoon_id, image_id, title, contents, webtoon_title, writer, date) 
+		values(#{ip_no}, #{platform_id}, #{webtoon_id}, #{image_id}, #{title}, #{contents}, #{webtoon_title}, #{writer}, #{date});
+	</insert>
+	
+	<update id="modifyBoardContent" parameterType="Map">
+		update board 
+		set title = #{title}, contents = #{contents}, webtoon_title = #{webtoon_title}
+		where id=#{id};
+	</update>
+	
+	<update id="deleteBoardContent" parameterType="Map">
+		delete from board
+		where id=#{id}
+	</update>
 
 </mapper>
