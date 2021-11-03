@@ -19,30 +19,30 @@ function ResultBottom() {
       </div>
       <Container className="result-bottom-right">
         <Row className="result-bottom-contents">
-          <Col xs={3} className="result-bottom-title">
+          <Col xs={4} className="result-bottom-title">
             <h5 className="fb">그림체</h5>
           </Col>
-          <Col xs={5} className="result-bottom-item">
+          <Col xs={8} className="result-bottom-item">
             <img src={chkImg} alt="chk" className="result-chk" />
             <div className="result-hr"/>
             <p>{webtoonInfo["drawing_style"]}</p>
           </Col>
         </Row>
         <Row className="result-bottom-contents">
-          <Col xs={3} className="result-bottom-title">
+          <Col xs={4} className="result-bottom-title">
             <h5 className="fb">개그</h5>
           </Col>
-          <Col xs={5} className="result-bottom-item">
+          <Col xs={8} className="result-bottom-item">
             <img src={chkImg} alt="chk" className="result-chk" />
             <div className="result-hr"/>
             <p>{webtoonInfo["humor"]}</p>
           </Col>
         </Row>
         <Row className="result-bottom-contents">
-          <Col xs={3} className="result-bottom-title">
+          <Col xs={4} className="result-bottom-title">
             <h5 className="fb">감동</h5>
           </Col>
-          <Col xs={5} className="result-bottom-item">
+          <Col xs={8} className="result-bottom-item">
             <img src={chkImg} alt="chk" className="result-chk" />
             <div className="result-hr"/>
             <p>{webtoonInfo["emotion"]}</p>
