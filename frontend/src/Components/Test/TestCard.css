@@ -5,6 +5,11 @@
   align-items: center;
 }
 
+.TestCard-img {
+  width: 200px;
+  height: 200px;
+}
+
 .TestCard-Card {
   display: flex;
   align-items: center;
@@ -14,12 +19,17 @@
   font-size: 20px;
 }
 
-.Answer {
-  width: 200px;
-  height: 50px;
-  background-color: #EC9CD3;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: #EC9CD3 !important;
+  width: 250px !important;
+  height: 50px !important;
 }
+
+.answer-shadow {
+  box-shadow: 5px 5px 5px;
+}
+
+
+

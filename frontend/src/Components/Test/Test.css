@@ -1,7 +1,5 @@
 .Test-bg {
   background-color: #f3bfe3;
-  /* z-index: -1;
-  position: absolute; */
 
   margin-top: 0;
   margin-left: 0;
@@ -9,23 +7,11 @@
   height: 1000px;
 
   display: flex;
-  /* align-items: center; */
   justify-content: center;
 }
 
 
 
-
-.Q {
-  color: black;
-}
-
-.a {
-  background-color: #EC9CD3;
-  color: aliceblue;
-  width: 300px;
-  height: 100px;
-}
 
 
 
