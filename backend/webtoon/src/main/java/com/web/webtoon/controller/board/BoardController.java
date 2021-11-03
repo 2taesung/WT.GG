@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.web.webtoon.model.BoardContent;
 import com.web.webtoon.model.service.BoardService;
 import com.web.webtoon.model.service.BoardServiceImpl;
+import com.web.webtoon.model.service.UserServiceImpl;
 
 @CrossOrigin("*")
 @RequestMapping("/board")
@@ -27,6 +28,9 @@ public class BoardController {
 
 	@Autowired
 	BoardServiceImpl boardService;
+	
+	@Autowired
+	UserServiceImpl userService;
 	
 	@GetMapping("/list")
 	public ResponseEntity<Map<String, Object>> getAllList(@RequestParam Map map) {
@@ -93,11 +97,18 @@ public class BoardController {
 		HttpStatus status = HttpStatus.ACCEPTED;
 		
 		try {
+			int insertRes = userService.insertUser(map);
+			if(insertRes == 0) {
+				result = "FAIL";
+				
+			}else {
+				result = "SUCCESS";
+			}
 			int res = boardService.insertBoardContent(map);
 			
 			if(res == 0) {
 				result = "FAIL";
-			} else {
+			} else if(res != 0 && insertRes != 0) {
 				result = "SUCCESS";
 			}
 			
