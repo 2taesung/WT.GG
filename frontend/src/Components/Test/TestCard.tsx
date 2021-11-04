@@ -1,8 +1,10 @@
 import React from 'react';
 import "./TestCard.css";
+import "./Button.scss";
 
 function TestCard() {
   const img = "/image/dummy.png";
+  
 
   return (
     <div className="TestCard-Card">
