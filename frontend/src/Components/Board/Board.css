@@ -43,20 +43,20 @@ td a {
     border: gray solid 1px;
 }
 
-.btn-primary {
+.btn-secondary {
     background: var(--main-bg-color);
     border: 1px solid var(--main-bg-color);
     border-radius: var(--main-border-radius);
 }
 
-.btn-check:focus, .btn-primary:hover {
+.btn-check:focus, .btn-secondary:hover {
     background: white;
     color: var(--main-bg-color);
     border: 1px solid var(--main-bg-color);
     border-radius: var(--main-border-radius);
 }
 
-.btn-primary a {
+.btn-secondary a {
     color: white;
 }
 

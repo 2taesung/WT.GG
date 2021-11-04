@@ -14,8 +14,8 @@ function BoardDetail() {
           <span>title1</span>
         </span>
         <span className="btns detail-btns">
-          <Button className="mx-2 small-btn">수정</Button>
-          <Button className="small-btn">삭제</Button>
+          <Button className="mx-2 small-btn" variant="secondary">수정</Button>
+          <Button className="small-btn" variant="secondary">삭제</Button>
         </span>
       </div>
       <div className="detail-content m-3">게시글 내용</div>
@@ -34,7 +34,7 @@ function BoardDetail() {
       <div className="create-comment mx-3">
         <textarea className="mx-3 mt-1 comment-textarea"></textarea>
         <div className="wrap-btn">
-        <Button className="small-btn">등록</Button>
+        <Button className="small-btn" variant="secondary">등록</Button>
         </div>
       </div>
     </div>
