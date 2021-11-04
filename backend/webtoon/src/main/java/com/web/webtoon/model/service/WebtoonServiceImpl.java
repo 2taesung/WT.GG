@@ -19,4 +19,9 @@ public class WebtoonServiceImpl implements WebtoonService {
 		return sqlsession.getMapper(WebtoonDao.class).getRankingList();
 	}
 
+	@Override
+	public Webtoon getWebtoonDetail(int id) throws Exception {
+		return sqlsession.getMapper(WebtoonDao.class).getWebtoonDetail(id);
+	}
+
 }

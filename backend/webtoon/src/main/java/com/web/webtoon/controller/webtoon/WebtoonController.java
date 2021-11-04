@@ -53,4 +53,33 @@ public class WebtoonController {
 		
 		return new ResponseEntity<Map<String, Object>>(resultMap, status);
 	}
+	
+	@GetMapping("/detail")
+	public ResponseEntity<Map<String, Object>> getAllList(@RequestParam int id) {
+		String result = "SUCCESS";
+		Map<String, Object> resultMap = new HashMap<>();
+		HttpStatus status = HttpStatus.ACCEPTED;
+		
+		try {
+			Webtoon webtoon = webtoonService.getWebtoonDetail(id);
+			
+			resultMap.put("webtoonDetail", webtoon);
+			
+			if(webtoon == null) {
+				result = "FAIL";
+			} else {
+				result = "SUCCESS";
+			}
+			
+			resultMap.put("message", result);
+			status = HttpStatus.ACCEPTED;
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			resultMap.put("message", e.getMessage());
+			status = HttpStatus.INTERNAL_SERVER_ERROR;
+		}
+		
+		return new ResponseEntity<Map<String, Object>>(resultMap, status);
+	}
 }
