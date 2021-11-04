@@ -11,4 +11,10 @@
 		on s.id = w.id
 		order by s.total desc;
 	</select>
+	
+	<select id="getWebtoonDetail" parameterType="int" resultType="Webtoon">
+		select *
+		from webtoon
+		where id=#{id};
+	</select>
 </mapper>
