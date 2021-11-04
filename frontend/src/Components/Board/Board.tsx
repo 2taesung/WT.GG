@@ -18,7 +18,7 @@ function Board() {
           <FormControl
             placeholder="search"
           />
-          <Button>
+          <Button variant="secondary">
             검색
           </Button>
         </InputGroup>
@@ -49,8 +49,8 @@ function Board() {
   </tbody>
 </table>
   <div className="btns">
-    <Button className="left-btn small-btn"> <Link to="/board/create"> 글쓰기 </Link></Button>
-    <Button className="small-btn">내 글 보기</Button>
+    <Button className="left-btn small-btn" variant="secondary"> <Link to="/board/create"> 글쓰기 </Link></Button>
+    <Button className="small-btn" variant="secondary">내 글 보기</Button>
   </div>
 
   <Pagination>

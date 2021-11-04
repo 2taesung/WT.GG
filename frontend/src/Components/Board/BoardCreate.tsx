@@ -14,8 +14,8 @@ function BoardCreate() {
       <hr />
       <textarea className="create-input create-post"></textarea>
       <div className="btns mt-3">
-      <Button className="left-btn small-btn">이미지 첨부하기</Button>
-      <Button className="small-btn">작성하기</Button>
+      <Button className="left-btn small-btn" variant="secondary">이미지 첨부하기</Button>
+      <Button className="small-btn" variant="secondary">작성하기</Button>
       </div>
     </div>
   )
