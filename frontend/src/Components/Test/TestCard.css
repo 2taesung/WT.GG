@@ -1,0 +1,32 @@
+.TestCard-Card {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.TestCard-img {
+  width: 200px;
+  height: 200px;
+}
+
+.TestCard-Card {
+  display: flex;
+  align-items: center;
+
+}
+.Question {
+  font-size: 20px;
+}
+
+
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: #EC9CD3 !important;
+  width: 250px !important;
+  height: 50px !important;
+}
+
+
+
+

@@ -1,0 +1,175 @@
+.result {
+  margin: 6rem 3rem 0 3rem;
+}
+
+.result-top {
+  height: 40vh;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#result-webtoon-img {
+  background-color: lightgray;
+  width: 35vh;
+  height: 35vh;
+}
+
+.result-top-right {
+  width: 40vw;
+  height: 35vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.result-top-right h3 {
+  font-weight: bold;
+}
+
+.result-more {
+  font-weight: bold;
+  cursor: pointer;
+  /* color: #989898; */
+}
+
+.result-btns {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.result-btn {
+  background-color: #EC9CD3;
+  color: #fff;
+  border-style: none;
+  border-radius: 18px;
+  padding: 0.5rem 1.5rem;
+}
+
+.result-btn h5 {
+  margin: 0;
+}
+
+.result-btn:hover {
+  cursor: pointer;
+  background-color: #B1E693;
+}
+
+.result-bottom-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.result-avatar {
+  background-color: lightgray;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+}
+
+.result-bottom-right {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  margin: 0;
+}
+
+.result-bottom-contents {
+  display: flex;
+  width: 40vw;
+  align-items: center;
+}
+
+.result-bottom-title {
+  display: flex;
+  justify-content: center;
+}
+
+.result-chk {
+  height: 2rem;
+}
+
+.result-hr {
+  width: 100%;
+  height: 0.2rem;
+  background-color: black;
+}
+
+.mb-result-btns {
+  display: none;
+}
+
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .result {
+    margin: 10vh 0 2rem 0;
+  }
+
+  .result-top {
+    flex-direction: column;
+    height: auto;
+  }
+
+  #result-webtoon-img {
+    width: 20vh;
+    height: 20vh;
+    margin-bottom: 0.5rem;
+  }
+
+  .result-top-right {
+    width: 90vw;
+  }
+
+  .result-avatar {
+    width: 25vw;
+    height: 25vw;
+  }
+
+  .result-btns {
+    display: none;
+  }
+  
+  .result-bottom {
+    margin-top: 2rem;
+  }
+
+  .result-bottom-right,
+  .result-bottom-contents {
+    width: 50vw;
+  }
+
+  .result-bottom-title h5 {
+    font-size: 1rem;
+  }
+
+  .result-hr {
+    height: 0.15rem;
+  }
+
+  .result-chk {
+    height: 1.5rem;
+  }
+
+  .mb-result-btns {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+    padding: 0 1rem;
+  }
+
+  .result-btn {
+    padding: 0.4rem 1.25rem;
+  }
+
+  .result-btn h5 {
+    font-size: 1.25rem;
+  }  
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="com.web.webtoon.model.dao.WebtoonDao">
+	<select id="getRankingList" resultType="Webtoon">
+		select s.id, w.author_id, w.platform_id, w.characteristic,
+		w.title, w.link, w.image, w.category, w.story, s.review_score, s.views_score, s.total
+		from scores s left join webtoon w
+		on s.id = w.id
+		order by s.total desc;
+	</select>
+	
+	<select id="getWebtoonDetail" parameterType="int" resultType="Webtoon">
+		select *
+		from webtoon
+		where id=#{id};
+	</select>
+</mapper>
