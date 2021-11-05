@@ -1,0 +1,61 @@
+image: node:latest
+
+stages:
+  - install
+  - build
+  - deploy
+
+install:
+  stage: install
+  script:
+    - apt-get update -qq && apt-get install
+    - yarn config set cache-folder .yarn
+    - yarn install
+  artifacts:
+    name: "artifacts"
+    untracked: true
+    expire_in: 30 mins
+    paths:
+      - .yarn/
+      - node_modules/
+    rules:
+      - if: SCI_COMMIT_REF_NAME == "master"
+        when: always
+      - if: SCI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"
+        when: always
+      - when: never
+
+  build:
+    stage: build
+    dependencies:
+      - install
+    script:
+      - yarn build
+    artifacts:
+      paths:
+        - build
+      expire_in: 30 mins
+    rules:
+      - if: SCI_COMMIT_REF_NAME == "master"
+        when: on_success
+      - if: SCI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"
+        when: on_success
+      - when: never
+
+  deploy:
+    image: python:latest
+    stage: deploy
+    dependencies:
+      - build
+    variable:
+      S3_BUCKET_NAME: gitlab-ssafy-manaboza
+    before_script:
+      - pip install awscli
+    script:
+      - aws s3 sync build s3://$S3_BUCKET_NAME/ --acl public-read
+    rules:
+      - if: SCI_COMMIT_REF_NAME == "master"
+        when: on_success
+      - if: SCI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"
+        when: on_success
+      - when: never
