@@ -81,6 +81,7 @@ td a {
 .btns {
     display: flex;
     justify-content: flex-end;
+    align-items: flex-end;
 }
 
 .small-btn {
@@ -114,6 +115,28 @@ td a {
 
 /* board Detail */
 
+.board-arrow {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: gray;
+}
+
+.board-arrow img {
+    height: 5vh;
+    transform: scaleX(-1);
+}
+
+.board-arrow:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.pat-bottom {
+    margin-left: 1rem;
+    font-size: 1.5rem;
+}
+
 .detail-title {
     border-bottom: 1px solid #DBD5D5;
     display: flex;
@@ -127,6 +150,10 @@ td a {
 
 .detail-webtoon-title {
     padding-right: 12px;
+}
+
+.small-btn {
+    padding: 0.2rem 1rem;
 }
 
 .detail-content {
@@ -201,6 +228,13 @@ td a {
         padding-bottom: 0;
         padding-left: .25rem;
         height: 80%;
+        width: 7rem;
+    }
+    .btns button a {
+        padding: 0 1rem;
+    }
+    .board-date {
+        display: none;
     }
   }
 
@@ -210,5 +244,18 @@ td a {
     }
     .comment-textarea {
         width: 92%;
+    }
+    .detail-title {
+        flex-direction: column;
+    }
+    .platform-and-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .pat-top {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
     }
   }
