@@ -8,7 +8,7 @@ soup=BeautifulSoup(html,'html.parser')
 
 title=soup.find_all('a',{'class': 'title'})
 title_list=[] ; title_num=[]
-
+print(title)
 #일주일 2회 이상 연재 작품은 한 번만 데이터 수집
 for x in range(len(title)):
     t=title[x].text
@@ -33,17 +33,13 @@ driver.get(URL)
 
 time.sleep(1)
 
-artist_list=[] ; genre_list=[] ; score_list=[] ; id_list=[] ; nick_list=[] ; chat_list=[]
-idlst=[] ; nicklst=[] ; chatlst=[] ; DataFrame_id={} ; DataFrame_chat={}
-star_parti=[] ; comment_parti=[] ; img_list=[]
+artist_list=[] ; genre_list=[] ; score_list=[] 
+star_parti=[] ; img_list=[] ; link_list=[] ; story_list=[]
+print(title_num)
 
-for i in title_num:
-    if i == 5:
-      break
+for i in range(len(title_list)+1):
     print(i)
-    id_list.clear()
-    nick_list.clear()
-    chat_list.clear()
+    break
     
     time.sleep(1)
     
@@ -61,80 +57,94 @@ for i in title_num:
     artist = soup.find_all('h2')
     artist = artist[1].find('span',{'class':'wrt_nm'}).text[8:]
     artist_list.append(artist)
-    print(artist)
+    print(artist_list)
     
     #작품 썸네일 이미지
     img=soup.select('#content > div.comicinfo > div.thumb > a > img')[0]['src']
-    img_list.append([img])
-    print(img)
-    break
+    img_list.append(img)
+    print(img_list)
+
+    #작품 링크 
+    link=soup.select('#content > div.comicinfo > div.thumb > a')[0]['href']
+    link_list.append('https://comic.naver.com'+link)
+    print(link_list)
+
+    #줄거리 링크 
+    story=soup.select('#content > div.comicinfo > div.detail > p:nth-child(2)')
+    story_list.append(story)
+    print(story_list)
+    
+    
     #작품 장르 수집
     genre=soup.find('span',{'class':'genre'}).text
     genre_list.append([genre])
-    print(genre)
+    print(genre_list)
+
     #최신 별점 평균 점수 수집 (최대 10화 분량)
     score = soup.find_all('strong')
-    print(score)
+    # print(score)
+    
+    # print(score)
     scorelist=[] ; ii=9
     while score[ii].text[0].isnumeric()==True:
         scorelist.append(float(score[ii].text))
         ii +=1
+        if len(scorelist) == 3:
+          break
     score_list.append(sum(scorelist)/len(scorelist))
     
+    print(score_list)
+
     
     time.sleep(0.5)
 
-    length=driver.find_elements_by_class_name('title')
-    print(score_list)
 
     #각 회차를 돌며 댓글 별점 참여자 수집
+###########################################################################################
+    # length=driver.find_elements_by_class_name('title')
+    # for j in range(1, len(length)):
+    #     #해당 페이지의 회차 모두 가져오기
+    #     titlenum=driver.find_elements_by_class_name('title')
+        
+    #     time.sleep(0.5)
+        
+    #     webnum=[y.text for y in titlenum]
+    #     enterToon = driver.find_elements_by_partial_link_text(webnum[j])
+        
+    #     time.sleep(0.5)
+        
+    #     enterToon[0].click()
+    #     pre = []
+    #     html = driver.page_source
+    #     soup = BeautifulSoup(html,'html.parser')
 
-    for j in range(1, len(length)):
-        #해당 페이지의 회차 모두 가져오기
-        titlenum=driver.find_elements_by_class_name('title')
+    #     # 별점 
+    #     star_p=soup.select('#topTotalStarPoint > span.pointTotalPerson > em')[0].text
         
-        time.sleep(0.5)
-        
-        webnum=[y.text for y in titlenum]
-        enterToon = driver.find_elements_by_partial_link_text(webnum[j])
-        
-        time.sleep(0.5)
-        
-        enterToon[0].click()
-        pre = []
-        html = driver.page_source
-        soup = BeautifulSoup(html,'html.parser')
-        star_p=soup.find('span',{'class':'pointTotalPerson'})
-        # print(star_p)
-        s=star_p.find('em').text
-        pre.append(int(s))
-
-        # print(s)
-        # star_p=soup.find('em')
-        
-        # star_p=soup.find_all('em')
-        # star_parti.append(star_p)
+    #     print(star_p)
+    #     pre.append(int(star_p))
         
 
+        
 
-        #페이지 뒤로 가기, 다시 만화 목록으로 
-        driver.back()
-        
-        time.sleep(1)
-        
-        titlenum.clear()
-        
-        #time.sleep(0.5)
-        
-        enterToon.clear()
-    comment_parti.append(sum(pre) / len(pre))
 
-# print(genre_list)
-    print(comment_parti)
+    #     #페이지 뒤로 가기, 다시 만화 목록으로 
+    #     driver.back()
+        
+    #     time.sleep(1)
+        
+    #     titlenum.clear()
+        
+        
+        
+    #     enterToon.clear()
+    # star_parti.append(sum(pre) / len(pre))
+    # print(star_parti)
+#############################################################################################
+
+
     print(title_list[i],"end")
-    idlst.append(id_list.copy())
-    nicklst.append(nick_list.copy())
-    chatlst.append(chat_list.copy())
+    
     
     driver.back()
     
@@ -143,4 +153,15 @@ for i in title_num:
     page.clear()
     
     time.sleep(0.5)
-    # length.clear()
+  
+webtoon_data = []
+
+
+print("작가 리스트 길이 :", len(artist_list))
+print("장르 리스트 길이 :", len(genre_list))
+print("평점 리스트 길이 :", len(score_list))
+# print("별점참여자 리스트 길이 :", len(star_parti))
+print("이미지 리스트 길이 :", len(img_list))
+print("링크 리스트 길이 :", len(link_list))
+print("스토리 리스트 길이 :", len(story_list))
+
