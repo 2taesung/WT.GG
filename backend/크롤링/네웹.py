@@ -25,6 +25,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from time import sleep
 import time
+import re
 
 URL='https://comic.naver.com/webtoon/weekday.nhn'
 driver=webdriver.Chrome('chromedriver.exe')
@@ -34,7 +35,7 @@ time.sleep(1)
 
 artist_list=[] ; genre_list=[] ; score_list=[] ; id_list=[] ; nick_list=[] ; chat_list=[]
 idlst=[] ; nicklst=[] ; chatlst=[] ; DataFrame_id={} ; DataFrame_chat={}
-star_parti=[] ; comment_parti=[]
+star_parti=[] ; comment_parti=[] ; img_list=[]
 
 for i in title_num:
     if i == 5:
@@ -62,6 +63,11 @@ for i in title_num:
     artist_list.append(artist)
     print(artist)
     
+    #작품 장르 수집
+    img=soup.find('img')
+    img_list.append([img])
+    print(img)
+    break
     #작품 장르 수집
     genre=soup.find('span',{'class':'genre'}).text
     genre_list.append([genre])
