@@ -21,6 +21,11 @@
     text-align: center;
 }
 
+.board-group:hover {
+    cursor: pointer;
+    background-color: rgba(177, 230, 147, 0.5);
+}
+
 a {
     text-decoration: none;
 }

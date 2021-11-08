@@ -3,7 +3,7 @@ import MainReducer from "./MainReducer";
 
 const rootReducer = combineReducers({
   // Reducer들 추가
-  MainReducer,
+  MainReducer
 });
 
 export default rootReducer;
