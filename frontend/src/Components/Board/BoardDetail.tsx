@@ -1,20 +1,31 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./Board.css";
 
 function BoardDetail() {
+  const arrow = "/image/arrow.png";
+
   return (
     <div className="content-wrapper">
       <h2 className="board-header">Board</h2>
+      <Link to="/board">
+        <div className="board-arrow">
+          <img src={arrow} alt="arrow" />
+          All Community
+        </div>
+      </Link>
       <hr />
       <div className="detail-title">
         <span className="platform-and-title">
-          <span className="detail-platform mx-3">플랫폼1</span>
-          <span className="detail-webtoon-title">만화제목2</span>
-          <span>title1</span>
+          <div className="pat-top">
+            <span className="detail-platform mx-3">플랫폼1</span>
+            <span className="detail-webtoon-title">만화제목2</span>
+          </div>
+          <div className="pat-bottom">title1</div>
         </span>
         <span className="btns detail-btns">
-          <Button className="mx-2 small-btn" variant="secondary">수정</Button>
+          <Button className="mx-2 small-btn" variant="secondary">수정</Button>       
           <Button className="small-btn" variant="secondary">삭제</Button>
         </span>
       </div>

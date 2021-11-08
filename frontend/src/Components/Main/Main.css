@@ -1,5 +1,5 @@
 .main {
-  margin-top: 8rem;
+  margin-top: 10vh;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -136,11 +136,10 @@
 
 @media (max-width: 768px) {
   .main {
-    height: 100vh;
+    height: 90vh;
     margin: 0;
-    padding-top: 5vh;
+    margin-top: 10vh;
     align-items: center;
-    height: 100vh;
     justify-content: space-evenly;
   }
 

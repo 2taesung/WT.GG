@@ -161,7 +161,7 @@ function Board() {
             <td>플랫폼</td>
             <td>웹툰 제목</td>
             <td className="board-title">제목</td>
-            <td>작성일</td>
+            <td className="board-date">작성일</td>
           </tr>
         </thead>
         <tbody>
@@ -173,7 +173,7 @@ function Board() {
                 {item["title"]}
                 <Badge pill text="dark">{item["comment_n"]}</Badge> 
               </td>
-              <td>{item["created_at"]}</td>
+              <td className="board-date">{item["created_at"]}</td>
             </tr>
           ))}
         </tbody>
