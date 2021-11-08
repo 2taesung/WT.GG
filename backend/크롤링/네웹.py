@@ -63,8 +63,8 @@ for i in title_num:
     artist_list.append(artist)
     print(artist)
     
-    #작품 장르 수집
-    img=soup.find('img')
+    #작품 썸네일 이미지
+    img=soup.select('#content > div.comicinfo > div.thumb > a > img')[0]['src']
     img_list.append([img])
     print(img)
     break
