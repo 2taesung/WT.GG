@@ -3,6 +3,10 @@
     --main-border-radius: 10px;
   }
 
+a {
+    text-decoration: none;
+}
+
 .content-wrapper {
     margin: 3rem;
 }
@@ -19,6 +23,11 @@
 
 .table {
     text-align: center;
+}
+
+.board-group:hover {
+    cursor: pointer;
+    background-color: rgba(177, 230, 147, 0.5);
 }
 
 a {
@@ -76,6 +85,7 @@ td a {
 .btns {
     display: flex;
     justify-content: flex-end;
+    align-items: flex-end;
 }
 
 .small-btn {
@@ -109,6 +119,28 @@ td a {
 
 /* board Detail */
 
+.board-arrow {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: gray;
+}
+
+.board-arrow img {
+    height: 5vh;
+    transform: scaleX(-1);
+}
+
+.board-arrow:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.pat-bottom {
+    margin-left: 1rem;
+    font-size: 1.5rem;
+}
+
 .detail-title {
     border-bottom: 1px solid #DBD5D5;
     display: flex;
@@ -122,6 +154,10 @@ td a {
 
 .detail-webtoon-title {
     padding-right: 12px;
+}
+
+.small-btn {
+    padding: 0.2rem 1rem;
 }
 
 .detail-content {
@@ -162,16 +198,82 @@ td a {
     justify-content: flex-end;
 }
 
+.comment-textarea {
+    resize: none;
+}
+
+/* 모달 */
+.password-modal-none {
+    display: none;
+}
+
+.password-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.pw-modal-bg {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pw-modal-body {
+    padding: 2rem 3rem;
+}
+
+.pw-modal-body input {
+    font-size: 2rem;
+    height: 2rem;
+}
+
+.pw-modal-btn {
+    background-color: #B1E693;
+    border: 1px solid #B1E693;
+}
+
+.pw-modal-btn:hover {
+    background: white;
+    color: #B1E693;
+    border: 1px solid #B1E693;
+}
+
 /* boardCreate */
 
 .header-create {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.platform-select {
+    width: auto;
+    margin-right: 2rem;
+}
+
+.selectboxs {
+    width: 98%;
+    display: flex;
     justify-content: flex-start;
+}
+
+.create-webtoon {
+    width: auto;
 }
 
 .create-input {
     background-color: #F9F4F4;
     border-width: 0px;
+    resize: none;
+}
+
+.create-title {
+    width: 98%;
+    margin: 1rem 0 !important;
 }
 
 .create-post {
@@ -179,6 +281,22 @@ td a {
     border-radius:  var(--main-border-radius);
     width: 98%;
     border: 0;
+}
+
+.create-bottom {
+    display: flex;
+    width: 98%;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.cu-btn {
+    padding: 0 1rem;
+    margin: 0 0.3rem;
+}
+
+a {
+    margin: 0;
 }
 
 @media screen and (max-width: 700px) {
@@ -196,6 +314,13 @@ td a {
         padding-bottom: 0;
         padding-left: .25rem;
         height: 80%;
+        width: 7rem;
+    }
+    .btns button a {
+        padding: 0 1rem;
+    }
+    .board-date {
+        display: none;
     }
   }
 
@@ -205,5 +330,36 @@ td a {
     }
     .comment-textarea {
         width: 92%;
+    }
+    .detail-title {
+        flex-direction: column;
+    }
+    .platform-and-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .pat-top {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .selectboxs {
+        flex-direction: column;
+    }
+    .platform-select {
+        margin: 0;
+        margin-bottom: 1rem;
+    }
+    .create-webtoon {
+        width: 7rem;
+        margin-left: 0 !important;
+    }   
+    .create-password {
+        width: 50%;
+    }
+    .cu-btn {
+        padding: 0 0.5rem;
+        margin: 0 0.3rem
     }
   }

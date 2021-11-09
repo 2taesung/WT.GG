@@ -6,11 +6,14 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import './Nav.css';
 
 function Nav() {
+  // const logo = "/image/logo.jpg"
+
   return (
     <div className="nav">
       <Link to="/" className="logo">
         <div className="nav-logo">
-          로고
+          WT.GG
+          {/* <img src={logo} alt="logo" /> */}
         </div>
       </Link>
       <div className="nav-right">
