@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.web.webtoon.model.BoardContent;
 import com.web.webtoon.model.service.BoardService;
 import com.web.webtoon.model.service.BoardServiceImpl;
+import com.web.webtoon.model.service.CommentServiceImpl;
 import com.web.webtoon.model.service.UserServiceImpl;
 
 @CrossOrigin("*")
@@ -31,6 +32,9 @@ public class BoardController {
 	
 	@Autowired
 	UserServiceImpl userService;
+	
+	@Autowired
+	CommentServiceImpl commentService;
 	
 	@GetMapping("/list")
 	public ResponseEntity<Map<String, Object>> getAllList(@RequestParam Map map) {
@@ -46,6 +50,10 @@ public class BoardController {
 			if(list == null) {
 				result = "FAIL";
 			} else {
+				int length = list.size();
+				for(int i = 0; i < length; i++) {
+					list.get(i).setComment(commentService.getCommentNum(list.get(i).getId()));
+				}
 				result = "SUCCESS";
 			}
 			

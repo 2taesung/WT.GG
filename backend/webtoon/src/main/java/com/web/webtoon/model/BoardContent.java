@@ -13,6 +13,21 @@ public class BoardContent {
 	private int webtoon_id;
 	private String contents;
 	private String webtoon_title;
+	private int comment;
+	private String platform_name;
+	
+	public String getPlatform_name() {
+		return platform_name;
+	}
+	public void setPlatform_name(String platform_name) {
+		this.platform_name = platform_name;
+	}
+	public int getComment() {
+		return comment;
+	}
+	public void setComment(int comment) {
+		this.comment = comment;
+	}
 	public int getId() {
 		return id;
 	}
