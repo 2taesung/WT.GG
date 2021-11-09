@@ -6,7 +6,10 @@
 <mapper namespace="com.web.webtoon.model.dao.BoardDao">
 
 	<select id="getAllList" resultType="BoardContent">
-		select * from board;
+		select b.id, b.ip_no, b.platform_id, b.webtoon_id, b.image_id,
+		b.title, b.contents, b.webtoon_title, b.writer, b.date, p.name
+		from board b, platform p
+		where b.platform_id = p.id ;
 	</select>
 	
 	<select id="getBoardContent" parameterType="int" resultType="BoardContent">
