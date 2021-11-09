@@ -18,3 +18,17 @@ code {
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'UhBeeyoongdi';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeyoongdi.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  }
+
+@font-face {
+  font-family: 'drfont_daraehand';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/drfont_daraehand.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

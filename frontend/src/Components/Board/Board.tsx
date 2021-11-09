@@ -127,7 +127,7 @@ function Board() {
 
   // 자세히보기
   const onClickDetail = (id: number) => {
-    window.location.replace(`/board/${id}`)
+    window.location.href = `/board/${id}`;
   }
 
   return (

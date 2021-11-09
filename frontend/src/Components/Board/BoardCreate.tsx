@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Form } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 
 function BoardCreate() {
   return (
@@ -13,15 +14,22 @@ function BoardCreate() {
             <option value="naver">네이버웹툰</option>
             <option value="kakao">카카오웹툰</option>
           </Form.Select>
+          <input type="text" name="webtoon" placeholder="웹툰 제목" className="mx-5 create-input create-webtoon"></input>
         </span>
-        <input type="text" name="title" placeholder="제목을 입력하세요" className="mx-5 create-input"></input>
+        <input type="text" name="title" placeholder="제목을 입력하세요" className="mx-5 create-input create-title"></input>
       </div>
       <hr />
       <textarea className="create-input create-post"></textarea>
-      <div className="btns mt-3">
-      <Button className="left-btn small-btn" variant="secondary">이미지 첨부하기</Button>
-      <Button className="small-btn" variant="secondary">작성하기</Button>
+      <div className="create-bottom">
+        <input type="password" name="password" placeholder="비밀번호" className="create-input create-password" />
+        <div className="btns mt-3">
+          <Button className="small-btn cu-btn" variant="secondary">작성</Button>
+          <Link to="/board">
+            <Button className="small-btn cu-btn" variant="secondary">취소</Button>
+          </Link>
+        </div>
       </div>
+      
     </div>
   )
 }
