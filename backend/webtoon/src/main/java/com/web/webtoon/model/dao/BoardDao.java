@@ -15,4 +15,6 @@ public interface BoardDao {
 	public int modifyBoardContent(Map map) throws Exception;
 	
 	public int deleteBoardContent(int id) throws Exception;
+	
+	public String getBoardContentPassword(int id) throws Exception;
 }

@@ -42,4 +42,9 @@ public class BoardServiceImpl implements BoardService{
 		return sqlsession.getMapper(BoardDao.class).deleteBoardContent(id);
 	}
 
+	@Override
+	public String getBoardContentPassword(int id) throws Exception {
+		return sqlsession.getMapper(BoardDao.class).getBoardContentPassword(id);
+	}
+
 }

@@ -32,5 +32,11 @@
 		delete from board
 		where id=#{id}
 	</update>
+	
+	<select id="getBoardContentPassword" parameterType="int" resultType="String">
+		select password
+		from anonymous
+		where board_id=#{id} ;
+	</select>
 
 </mapper>
