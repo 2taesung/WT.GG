@@ -9,4 +9,10 @@
 		from comment
 		where post_id=#{id};
 	</select>
+	
+	<select id="getPostComments" parameterType="int" resultType="Comment">
+		select *
+		from comment
+		where post_id=#{id}
+	</select>
 </mapper>
