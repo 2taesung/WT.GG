@@ -190,4 +190,31 @@ public class BoardController {
 		
 		return new ResponseEntity<Map<String, Object>>(resultMap, status);
 	}
+	
+	@PostMapping("/checkpwd")
+	public ResponseEntity<Map<String, Object>> checkPassword(@RequestParam Map map) {
+		String result = "SUCCESS";
+		Map<String, Object> resultMap = new HashMap<>();
+		HttpStatus status = HttpStatus.ACCEPTED;
+		
+		try {
+			String pwd = boardService.getBoardContentPassword(Integer.parseInt((String) map.get("id")));
+			
+			if(pwd == null) {
+				result = "FAIL";
+			} else if(map.get("password").equals(pwd)) {
+				result = "SUCCESS";
+			}
+			
+			resultMap.put("message", result);
+			status = HttpStatus.ACCEPTED;
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			resultMap.put("message", e.getMessage());
+			status = HttpStatus.INTERNAL_SERVER_ERROR;
+		}
+		
+		return new ResponseEntity<Map<String, Object>>(resultMap, status);
+	}
 }
