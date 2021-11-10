@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.webtoon.model.BoardContent;
+import com.web.webtoon.model.Comment;
 import com.web.webtoon.model.service.BoardService;
 import com.web.webtoon.model.service.BoardServiceImpl;
 import com.web.webtoon.model.service.CommentServiceImpl;
@@ -80,7 +81,11 @@ public class BoardController {
 			
 			resultMap.put("content", content);
 			
-			if(content == null) {
+			List<Comment> comments = commentService.getPostComments(id);
+			
+			resultMap.put("comments", comments);
+			
+			if(content == null || comments == null) {
 				result = "FAIL";
 			} else {
 				result = "SUCCESS";
