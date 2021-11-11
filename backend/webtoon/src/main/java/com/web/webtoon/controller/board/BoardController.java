@@ -189,13 +189,13 @@ public class BoardController {
 	}
 	
 	@PostMapping("/checkpwd")
-	public ResponseEntity<Map<String, Object>> checkPassword(@RequestParam Map map) {
+	public ResponseEntity<Map<String, Object>> checkPassword(@RequestBody Map map) {
 		String result = "SUCCESS";
 		Map<String, Object> resultMap = new HashMap<>();
 		HttpStatus status = HttpStatus.ACCEPTED;
 		
 		try {
-			String pwd = boardService.getBoardContentPassword(Integer.parseInt((String) map.get("id")));
+			String pwd = boardService.getBoardContentPassword((int)map.get("id"));
 			
 			if(pwd == null) {
 				result = "FAIL";
@@ -203,6 +203,35 @@ public class BoardController {
 				result = "SUCCESS";
 			}
 			
+			resultMap.put("message", result);
+			status = HttpStatus.ACCEPTED;
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			resultMap.put("message", e.getMessage());
+			status = HttpStatus.INTERNAL_SERVER_ERROR;
+		}
+		
+		return new ResponseEntity<Map<String, Object>>(resultMap, status);
+	}
+	
+	@PostMapping("comment/write")
+	public ResponseEntity<Map<String, Object>> writeComment(@RequestBody Map map) {
+		String result = "SUCCESS";
+		Map<String, Object> resultMap = new HashMap<>();
+		HttpStatus status = HttpStatus.ACCEPTED;
+		
+		try {
+			
+			int res = boardService.insertBoardContent(map);
+			map.put("board_id", boardService.getLatestBoardId());
+			int insertRes = userService.insertUser(map);
+			
+			if(res == 0 || insertRes == 0) {
+				result = "FAIL";
+			} else if(res != 0) {
+				result = "SUCCESS";
+			}
 			resultMap.put("message", result);
 			status = HttpStatus.ACCEPTED;
 			
