@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class BoardContent {
 	private int id;
 	private String title;
-	private Timestamp regdate;
+	private Timestamp date;
 	private String writer;
 	private int image_id;
 	private String ip_no;
@@ -40,11 +40,11 @@ public class BoardContent {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Timestamp getRegdate() {
-		return regdate;
+	public Timestamp getDate() {
+		return date;
 	}
-	public void setRegdate(Timestamp regdate) {
-		this.regdate = regdate;
+	public void setDate(Timestamp date) {
+		this.date = date;
 	}
 	public String getWriter() {
 		return writer;
