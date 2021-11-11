@@ -79,7 +79,7 @@ td a {
 }
 
 .board-title {
-    width: 60%;
+    width: 50%;
 }
 
 .btns {
@@ -96,25 +96,19 @@ td a {
     margin-right: 3px;
 }
 
-.pagination {
+.loading {
+    position: fixed;
     display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    align-items: center;
+    justify-content: center; 
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
 }
 
-.page-link {
-    color: var(--main-bg-color);
-    border: 0;
-}
-
-.page-link:focus {
-    background-color: white;
-    color: var(--main-bg-color);
-}
-
-.page-link:hover {
-    background-color: var(--main-bg-color);
-    color: white;
+.hide {
+    display: none;
 }
 
 /* board Detail */
@@ -299,6 +293,11 @@ a {
     margin: 0;
 }
 
+.create-nickname,
+.create-password {
+    margin: 0 1rem;
+}
+
 @media screen and (max-width: 700px) {
     td, .page-link, .small-btn, .platform-select, .webtoon-select {
         font-size: 0.75rem;
@@ -354,12 +353,20 @@ a {
     .create-webtoon {
         width: 7rem;
         margin-left: 0 !important;
-    }   
+    }
+    .create-nickname, 
     .create-password {
-        width: 50%;
+        margin: 0.5rem 0;
     }
     .cu-btn {
         padding: 0 0.5rem;
         margin: 0 0.3rem
+    }
+    .create-bottom {
+        align-items: center;
+    }
+    .btns {
+        margin-top: 0!important;
+        flex-direction: column;
     }
   }
