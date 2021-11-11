@@ -19,4 +19,9 @@ public class UserServiceImpl implements UserService{
 		return sqlsession.getMapper(UserDao.class).insertUser(map);
 	}
 
+	@Override
+	public int changePassword(Map map) throws Exception {
+		return sqlsession.getMapper(UserDao.class).changePassword(map);
+	}
+
 }

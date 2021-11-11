@@ -134,13 +134,14 @@ public class BoardController {
 	}
 	
 	@PutMapping("/modify")
-	public ResponseEntity<Map<String, Object>> modifyBoardContent(@RequestParam Map map) {
+	public ResponseEntity<Map<String, Object>> modifyBoardContent(@RequestBody Map map) {
 		String result = "SUCCESS";
 		Map<String, Object> resultMap = new HashMap<>();
 		HttpStatus status = HttpStatus.ACCEPTED;
 		
 		try {
 			int res = boardService.modifyBoardContent(map);
+			int changePassword = userService.changePassword(map);
 			
 			if(res == 0) {
 				result = "FAIL";

@@ -11,4 +11,9 @@
 		values(#{password}, #{board_id});
 	</insert>
 
+	<update id="changePassword" parameterType="Map">
+		update anonymous
+		set password=#{password}
+		where board_id=#{id}
+	</update>
 </mapper>
