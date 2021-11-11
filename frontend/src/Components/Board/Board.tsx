@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
 
 import { Button, InputGroup, FormControl, Badge, Form } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,47 +8,33 @@ import './Board.css';
 
 
 function Board() {
-  var all_board = [
-    {
-      "id": 1,
-      "platform": "네이버웹툰",
-      "webtoon": "메롱",
-      "title": "ㅋㅋㅋㅋㅋㅋ",
-      "created_at": "21.11.08",
-      "comment_n": 7
-    },
-    {
-      "id": 2,
-      "platform": "카카오웹툰",
-      "webtoon": "다이어트",
-      "title": "게시글제목",
-      "created_at": "21.11.08",
-      "comment_n": 5
-    },
-    {
-      "id": 4,
-      "platform": "네이버웹툰",
-      "webtoon": "대머리",
-      "title": "탈모탈모빔",
-      "created_at": "21.11.08",
-      "comment_n": 7
-    },
-    {
-      "id": 9,
-      "platform": "카카오웹툰",
-      "webtoon": "카카오다이어트",
-      "title": "헤헷",
-      "created_at": "21.11.08",
-      "comment_n": 5
-    }
-  ]
-
-  const [ board, setBoard ] = useState(all_board);
+  const [ allBoard, setAllBoard ] = useState<any[]>([])
+  const [ board, setBoard ] = useState(allBoard);
   const [ category, setCategory ] = useState("all");
+  const [ loading, setLoading ] = useState("load");
 
-  // 정렬 : API 받고 나서 시간순으로 정렬!!
+  useEffect(() => {
+    const fetchBoard = async () => {
+      const url = "http://localhost:8080/board/list";
+  
+      await axios.get(url)
+      .then(res => {
+        setAllBoard(res.data.list)
+        setBoard(res.data.list)
+        setLoading("endLoad")
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+
+    fetchBoard()
+  }, []);
+
+
+  // 정렬
   const boardSort = () => {
-    board.sort(function (a, b) {
+    board.sort(function (a: any, b: any) {
       if (a.id > b.id) { return -1 }
       if (a.id < b.id) { return 1 }
       return 0
@@ -58,28 +45,28 @@ function Board() {
 
   // 플랫폼 선택
   var naver: any = []
-  for (let i=0; i<all_board.length; i++) {
-    if (all_board[i]["platform"] === "네이버웹툰") {
-      naver.push(all_board[i])
+  for (let i=0; i<allBoard.length; i++) {
+    if (allBoard[i]["platform_name"] === "NAVER") {
+      naver.push(allBoard[i])
     }
   }
 
   var kakao: any = []
-  for (let i=0; i<all_board.length; i++) {
-    if (all_board[i]["platform"] === "카카오웹툰") {
-      kakao.push(all_board[i])
+  for (let i=0; i<allBoard.length; i++) {
+    if (allBoard[i]["platform_name"] === "KAKAO") {
+      kakao.push(allBoard[i])
     }
   }
 
   const onSelectPlatform = (e: any) => {
     if (e.target.value === "all") {
-      setBoard(board => all_board)
+      setBoard(allBoard)
     }
     else if (e.target.value === "naver") {
-      setBoard(board => naver)
+      setBoard(naver)
     }
     else if (e.target.value === "kakao") {
-      setBoard(board => kakao)
+      setBoard(kakao)
     }
     setCategory(category => e.target.value)
     boardSort()
@@ -102,26 +89,26 @@ function Board() {
   const onSearchKeyword = () => {
     var temp_board: any = []
     if (category === "all") {
-      for (let j=0; j<all_board.length; j++) {
-        if (all_board[j]["webtoon"].includes(keyword) || all_board[j]["title"].includes(keyword)) {
-          temp_board.push(all_board[j])
+      for (let j=0; j<allBoard.length; j++) {
+        if (allBoard[j]["webtoon_title"].includes(keyword) || allBoard[j]["title"].includes(keyword)) {
+          temp_board.push(allBoard[j])
         }
       }
     } else if (category === "naver") {
       for (let j=0; j<naver.length; j++) {
-        if (naver[j]["webtoon"].includes(keyword) || naver[j]["title"].includes(keyword)) {
+        if (naver[j]["webtoon_title"].includes(keyword) || naver[j]["title"].includes(keyword)) {
           temp_board.push(naver[j])
         }
       }
     } else if (category === "kakao") {
       for (let j=0; j<kakao.length; j++) {
-        if (kakao[j]["webtoon"].includes(keyword) || kakao[j]["title"].includes(keyword)) {
+        if (kakao[j]["webtoon_title"].includes(keyword) || kakao[j]["title"].includes(keyword)) {
           temp_board.push(kakao[j])
         }
       }
     }
 
-    setBoard(board => temp_board)
+    setBoard(temp_board)
     boardSort()
   }
 
@@ -130,8 +117,13 @@ function Board() {
     window.location.href = `/board/${id}`;
   }
 
+  const loading_img = "/image/loading.gif";
+
   return (
     <div className="content-wrapper">
+      <div className={loading === "load" ? "loading" : "hide"}>
+        <img src={loading_img} alt="laoding" />
+      </div>
       <h2 className="board-header">Board</h2>
       <hr />
       <div className="header">
@@ -161,19 +153,21 @@ function Board() {
             <td>플랫폼</td>
             <td>웹툰 제목</td>
             <td className="board-title">제목</td>
+            <td className="board-date">작성자</td>
             <td className="board-date">작성일</td>
           </tr>
         </thead>
         <tbody>
-          {board.map((item, idx) => (
+          {board.map((item: any, idx: number) => (
             <tr key={idx} className="board-group" onClick={() => onClickDetail(item["id"])}>
-              <td>{item["platform"]}</td>
-              <td>{item["webtoon"]}</td>
+              <td>{item["platform_name"]}</td>
+              <td>{item["webtoon_title"]}</td>
               <td className="board-title">
-                {item["title"]}
-                <Badge pill text="dark">{item["comment_n"]}</Badge> 
+                {item["title"]}&nbsp;
+                <Badge pill text="dark">{item["comment"]}</Badge> 
               </td>
-              <td className="board-date">{item["created_at"]}</td>
+              <td className="board-date">{item["writer"]}</td>
+              <td className="board-date">{item["regdate"]}</td>
             </tr>
           ))}
         </tbody>
