@@ -13,8 +13,10 @@
 	</select>
 	
 	<select id="getBoardContent" parameterType="int" resultType="BoardContent">
-		select * from board 
-		where id=#{id};
+		select b.id, b.platform_id, b.webtoon_id,
+		b.title, b.contents, b.webtoon_title, b.writer, b.date, p.name as platform_name
+		from board b, platform p
+		where b.platform_id = p.id and b.id=#{id};
 	</select>
 	
 	<insert id="insertBoardContent" parameterType="Map">
