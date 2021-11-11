@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -104,27 +105,22 @@ public class BoardController {
 	}
 	
 	@PostMapping("/write")
-	public ResponseEntity<Map<String, Object>> writeBoardContent(@RequestParam Map map) {
+	public ResponseEntity<Map<String, Object>> writeBoardContent(@RequestBody Map map) {
 		String result = "SUCCESS";
 		Map<String, Object> resultMap = new HashMap<>();
 		HttpStatus status = HttpStatus.ACCEPTED;
 		
 		try {
-			int insertRes = userService.insertUser(map);
-			if(insertRes == 0) {
-				result = "FAIL";
-				
-			}else {
-				result = "SUCCESS";
-			}
+			
 			int res = boardService.insertBoardContent(map);
+			map.put("board_id", boardService.getLatestBoardId());
+			int insertRes = userService.insertUser(map);
 			
-			if(res == 0) {
+			if(res == 0 || insertRes == 0) {
 				result = "FAIL";
-			} else if(res != 0 && insertRes != 0) {
+			} else if(res != 0) {
 				result = "SUCCESS";
 			}
-			
 			resultMap.put("message", result);
 			status = HttpStatus.ACCEPTED;
 			
