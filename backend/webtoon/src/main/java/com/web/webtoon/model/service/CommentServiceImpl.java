@@ -1,6 +1,7 @@
 package com.web.webtoon.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,16 @@ public class CommentServiceImpl implements CommentService{
 	@Override
 	public List<Comment> getPostComments(int id) throws Exception {
 		return sqlSession.getMapper(CommentDao.class).getPostComments(id);
+	}
+
+	@Override
+	public int insertComment(Map map) throws Exception {
+		return sqlSession.getMapper(CommentDao.class).insertComment(map);
+	}
+
+	@Override
+	public int deleteComment(int id) throws Exception {
+		return sqlSession.getMapper(CommentDao.class).deleteComment(id);
 	}
 
 }

@@ -15,4 +15,14 @@
 		from comment
 		where post_id=#{id}
 	</select>
+	
+	<insert id="insertComment" parameterType="Map">
+		insert into comment(post_id, comment, password)
+		values(#{id}, #{comment}, #{password});
+	</insert>
+	
+	<update id="deleteComment" parameterType="int">
+		delete from comment
+		where id=#{id};
+	</update>
 </mapper>
