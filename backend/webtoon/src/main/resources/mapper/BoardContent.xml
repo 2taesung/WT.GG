@@ -24,7 +24,7 @@
 	
 	<update id="modifyBoardContent" parameterType="Map">
 		update board 
-		set title = #{title}, contents = #{contents}, webtoon_title = #{webtoon_title}
+		set title = #{title}, contents = #{contents}, webtoon_id = #{webtoon_id}, platform_id=#{platform_id}
 		where id=#{id};
 	</update>
 	
