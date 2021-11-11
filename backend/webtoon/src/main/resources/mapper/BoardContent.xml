@@ -18,8 +18,8 @@
 	</select>
 	
 	<insert id="insertBoardContent" parameterType="Map">
-		insert into board(ip_no, platform_id, webtoon_id, image_id, title, contents, webtoon_title, writer, date) 
-		values(#{ip_no}, #{platform_id}, #{webtoon_id}, #{image_id}, #{title}, #{contents}, #{webtoon_title}, #{writer}, #{date});
+		insert into board(platform_id, webtoon_id,  title, contents, webtoon_title, writer, date) 
+		values(#{platform_id}, #{webtoon_id},  #{title}, #{contents}, #{webtoon_title}, #{writer}, #{date});
 	</insert>
 	
 	<update id="modifyBoardContent" parameterType="Map">
@@ -39,4 +39,10 @@
 		where board_id=#{id} ;
 	</select>
 
+	<select id="getLatestBoardId" resultType="int">
+		select id
+		from board
+		order by id desc
+		limit 1;
+	</select>
 </mapper>

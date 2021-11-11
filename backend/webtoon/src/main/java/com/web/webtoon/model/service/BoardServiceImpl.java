@@ -47,4 +47,9 @@ public class BoardServiceImpl implements BoardService{
 		return sqlsession.getMapper(BoardDao.class).getBoardContentPassword(id);
 	}
 
+	@Override
+	public int getLatestBoardId() throws Exception {
+		return sqlsession.getMapper(BoardDao.class).getLatestBoardId();
+	}
+
 }

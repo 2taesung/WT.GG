@@ -7,8 +7,8 @@
 
 	
 	<insert id="insertUser" parameterType="Map">
-		insert into anonymous(ip_no, password) 
-		values(#{ip_no}, #{password});
+		insert into anonymous(password, board_id) 
+		values(#{password}, #{board_id});
 	</insert>
 
 </mapper>

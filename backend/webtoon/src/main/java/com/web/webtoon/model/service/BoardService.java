@@ -18,4 +18,6 @@ public interface BoardService {
 	public int deleteBoardContent(int id) throws Exception;
 	
 	public String getBoardContentPassword(int id) throws Exception;
+	
+	public int getLatestBoardId() throws Exception;
 }
