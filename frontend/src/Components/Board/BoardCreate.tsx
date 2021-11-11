@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 class BoardCreate extends React.Component {
   state = {
     platform_id: 1,
-    webtoon_id: 0,
+    webtoon_id: 45,
     title: "", 
     contents: "",
     webtoon_title: "",
@@ -49,11 +49,13 @@ class BoardCreate extends React.Component {
 
     await axios.post(url, this.state)
     .then(res => {
-      console.log(res)
-      alert("글이 작성되었습니다.")
+      if (res.data["message"] === "SUCCESS") {
+        alert("글이 작성되었습니다.")
+        window.location.replace('/board')
+      }
     })
     .catch(err => {
-      console.log(err.response)
+      console.log(err.response.data.message)
       alert("글 작성에 실패하였습니다.")
     })
   }

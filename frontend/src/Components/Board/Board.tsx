@@ -19,8 +19,12 @@ function Board() {
   
       await axios.get(url)
       .then(res => {
-        setAllBoard(res.data.list)
-        setBoard(res.data.list)
+        const data = res.data.list
+        for (let i=0; i<data.length; i++) {
+          data[i]["date"] = String(data[i]["date"].slice(0, 4)) +"."+ String(data[i]["date"].slice(5, 7)) +"."+ String(data[i]["date"].slice(8, 10))
+        }
+        setAllBoard(data)
+        setBoard(data)
         setLoading("endLoad")
       })
       .catch(err => {
@@ -167,7 +171,7 @@ function Board() {
                 <Badge pill text="dark">{item["comment"]}</Badge> 
               </td>
               <td className="board-date">{item["writer"]}</td>
-              <td className="board-date">{item["regdate"]}</td>
+              <td className="board-date">{item["date"]}</td>
             </tr>
           ))}
         </tbody>
