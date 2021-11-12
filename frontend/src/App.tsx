@@ -18,6 +18,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
+  window.scrollTo(0, 0);
   WebtoonApi()
 
   return (
