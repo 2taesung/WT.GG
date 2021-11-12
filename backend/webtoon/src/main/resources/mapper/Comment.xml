@@ -18,7 +18,7 @@
 	
 	<insert id="insertComment" parameterType="Map">
 		insert into comment(post_id, comment, password)
-		values(#{id}, #{comment}, #{password});
+		values(#{board_id}, #{comment_content}, #{comment_password});
 	</insert>
 	
 	<update id="deleteComment" parameterType="int">
