@@ -19,10 +19,15 @@
   font-weight: bold;
 }
 
+.ranking-selectboxs {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .ranking-content {
   box-shadow: 5px 5px 5px gray;
   border-radius: 5px;
-  margin: 1rem 0;
+  margin: 2rem 0;
   height: auto;
   display: flex;
   align-items: center;
