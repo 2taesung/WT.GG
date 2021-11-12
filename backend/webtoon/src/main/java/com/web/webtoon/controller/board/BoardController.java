@@ -217,7 +217,7 @@ public class BoardController {
 		return new ResponseEntity<Map<String, Object>>(resultMap, status);
 	}
 	
-	@PostMapping("comment/write")
+	@PostMapping("/comment/write")
 	public ResponseEntity<Map<String, Object>> writeComment(@RequestBody Map map) {
 		String result = "SUCCESS";
 		Map<String, Object> resultMap = new HashMap<>();
@@ -244,7 +244,7 @@ public class BoardController {
 		return new ResponseEntity<Map<String, Object>>(resultMap, status);
 	}
 	
-	@DeleteMapping("comment/delete")
+	@DeleteMapping("/comment/delete")
 	public ResponseEntity<Map<String, Object>> deleteComment(@RequestParam int id) {
 		String result = "SUCCESS";
 		Map<String, Object> resultMap = new HashMap<>();
