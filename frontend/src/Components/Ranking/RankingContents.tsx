@@ -1,41 +1,61 @@
 import React from "react";
+import { RootState } from '../../Redux/Reducers';
+import { useSelector } from 'react-redux';
 import "./Ranking.css";
 import { Container, Row, Col } from "react-bootstrap";
 
 function RankingContents() {
-  const contents = [
-    {"website": "네이버웹툰", "title": "독립일기", "writer1": "자까", "writer2": "자까", "score": 98},
-    {"website": "카카오웹툰", "title": "190cm의 헬스광 황성안,이 세계에서 바람에 쓰러지다?!", "writer1": "흑염룡", "writer2": "은지", "score": 97},
-    {"website": "레진코믹스", "title": "탈모탈모빔", "writer1": "이태성", "writer2": "강대영", "score": 93}
-  ]
+  const data = useSelector((state: RootState) => state.WebtoonReducer);
+  const category = useSelector((state: RootState) => state.RankingReducer);
+
+  var all = data.slice(0, 10)
+  var naver = []
+  var kakao = []
+
+  var n_cnt = 0
+  var k_cnt = 0
+  for (let i=0; i<data.length; i++) {
+    if (data[i]["platform_id"] === 1) {
+      n_cnt += 1
+      naver.push(data[i])
+    }
+    else if (data[i]["platform_id"] === 2) {
+      k_cnt += 1
+      kakao.push(data[i])
+    }
+    if (n_cnt >= 10 && k_cnt >= 10) {
+      break
+    }
+  }
+
+  // 카테고리 선택
+  var contents = all
+  if (category === "all") {
+    contents = all
+  } else if (category === "naver") {
+    contents = naver.slice(0, 10)
+  } else if (category === "kakao") {
+    contents = kakao.slice(0, 10)
+  }
 
   return (
     <Container>
-      {contents.map((content, idx) => (
+      {contents.map((content: any, idx: number) => (
         <Row className="ranking-content" key={idx}>
           <Col className="ranking-rank"><h5>{idx+1}</h5></Col>
           <Col className="ranking-wi">
-            {content["website"]}
+            {content["platform_id"] === 1 ? "네이버웹툰" : "카카오웹툰" }
             <div className="ranking-img"></div>
           </Col>
           <Col xs={7} className="ranking-body">
             <div>
               <h5>{content["title"]}</h5>
-            </div>
-            {content["writer1"] !== content["writer2"] ? 
-              <div>
-                <span className="fb">글</span> {content["writer1"]}&nbsp;
-                <span className="fb">그림</span> {content["writer2"]} 
-              </div> : 
-              <div>
-                <span className="fb">글/그림</span> {content["writer1"]}&nbsp;
-              </div>
-            }
-            
+            </div>          
+            <span className="fb">글 / 그림</span> {content["artist"]}&nbsp;            
           </Col>
-          <Col className="ranking-score">
+          {/* <Col className="ranking-score">
             <h5>{content["score"]}</h5>
-          </Col>
+          </Col> */}
         </Row>
         ))}
     </Container>

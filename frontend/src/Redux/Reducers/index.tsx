@@ -1,9 +1,13 @@
 import { combineReducers } from "redux";
 import MainReducer from "./MainReducer";
+import WebtoonReducer from "./WebtoonReducer";
+import RankingReducer from "./RankingReducer";
 
 const rootReducer = combineReducers({
   // Reducer들 추가
-  MainReducer
+  MainReducer,
+  WebtoonReducer,
+  RankingReducer
 });
 
 export default rootReducer;
