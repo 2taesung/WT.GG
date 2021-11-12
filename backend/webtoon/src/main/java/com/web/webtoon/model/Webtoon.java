@@ -12,7 +12,7 @@ public class Webtoon {
 	private String story;
 	private int review_score;
 	private int views_score;
-	private int total;
+	private float score;
 	private String artist;
 	
 	public int getReview_score() {
@@ -27,11 +27,11 @@ public class Webtoon {
 	public void setViews_score(int views_score) {
 		this.views_score = views_score;
 	}
-	public int getTotal() {
-		return total;
+	public float getTotal() {
+		return score;
 	}
-	public void setTotal(int total) {
-		this.total = total;
+	public void setTotal(float score) {
+		this.score = score;
 	}
 	public int getId() {
 		return id;

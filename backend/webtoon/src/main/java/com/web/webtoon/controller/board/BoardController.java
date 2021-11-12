@@ -225,15 +225,40 @@ public class BoardController {
 		
 		try {
 			
-			int res = boardService.insertBoardContent(map);
-			map.put("board_id", boardService.getLatestBoardId());
-			int insertRes = userService.insertUser(map);
+			int res = commentService.insertComment(map);
 			
-			if(res == 0 || insertRes == 0) {
+			if(res == 0) {
 				result = "FAIL";
 			} else if(res != 0) {
 				result = "SUCCESS";
 			}
+			resultMap.put("message", result);
+			status = HttpStatus.ACCEPTED;
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			resultMap.put("message", e.getMessage());
+			status = HttpStatus.INTERNAL_SERVER_ERROR;
+		}
+		
+		return new ResponseEntity<Map<String, Object>>(resultMap, status);
+	}
+	
+	@DeleteMapping("comment/delete")
+	public ResponseEntity<Map<String, Object>> deleteComment(@RequestParam int id) {
+		String result = "SUCCESS";
+		Map<String, Object> resultMap = new HashMap<>();
+		HttpStatus status = HttpStatus.ACCEPTED;
+		
+		try {
+			int res = commentService.deleteComment(id);
+			
+			if(res == 0) {
+				result = "FAIL";
+			} else {
+				result = "SUCCESS";
+			}
+			
 			resultMap.put("message", result);
 			status = HttpStatus.ACCEPTED;
 			
