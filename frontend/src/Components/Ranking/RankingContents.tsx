@@ -45,13 +45,15 @@ function RankingContents() {
           <Col className="ranking-rank"><h5>{idx+1}</h5></Col>
           <Col className="ranking-wi">
             {content["platform_id"] === 1 ? "네이버웹툰" : "카카오웹툰" }
-            <div className="ranking-img"></div>
+            <img className="ranking-img" src={content["image_link"]} alt="webtoon-img" />
           </Col>
           <Col xs={7} className="ranking-body">
             <div>
               <h5>{content["title"]}</h5>
+            </div>      
+            <div>    
+              <span className="fb">글/그림</span> {content["artist"]}&nbsp;  
             </div>          
-            <span className="fb">글 / 그림</span> {content["artist"]}&nbsp;            
           </Col>
           {/* <Col className="ranking-score">
             <h5>{content["score"]}</h5>

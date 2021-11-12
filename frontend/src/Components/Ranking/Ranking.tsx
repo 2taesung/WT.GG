@@ -7,6 +7,8 @@ import { Form } from "react-bootstrap";
 import "./Ranking.css";
 
 function Ranking() {
+  window.scrollTo(0, 0);
+
   const dispatch = useDispatch();
   const [category, setCategory]  = useState("all");
 

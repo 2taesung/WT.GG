@@ -8,6 +8,8 @@ import './Board.css';
 
 
 function Board() {
+  window.scrollTo(0, 0);
+  
   const [ allBoard, setAllBoard ] = useState<any[]>([])
   const [ board, setBoard ] = useState(allBoard);
   const [ category, setCategory ] = useState("all");
