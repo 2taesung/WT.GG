@@ -25,4 +25,10 @@
 		delete from comment
 		where id=#{comment_id};
 	</update>
+	
+	<select id="getCommentPassword" parameterType="int" resultType="String">
+		select password
+		from comment
+		where id=#{comment_id} ;
+	</select>
 </mapper>

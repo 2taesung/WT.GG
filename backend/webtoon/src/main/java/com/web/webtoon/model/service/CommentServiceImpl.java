@@ -35,4 +35,9 @@ public class CommentServiceImpl implements CommentService{
 		return sqlSession.getMapper(CommentDao.class).deleteComment(id);
 	}
 
+	@Override
+	public String getCommentPassword(int id) throws Exception {
+		return sqlSession.getMapper(CommentDao.class).getCommentPassword(id);
+	}
+
 }

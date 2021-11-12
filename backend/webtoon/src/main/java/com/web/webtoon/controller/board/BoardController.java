@@ -245,19 +245,28 @@ public class BoardController {
 	}
 	
 	@DeleteMapping("/comment/delete")
-	public ResponseEntity<Map<String, Object>> deleteComment(@RequestParam int id) {
+	public ResponseEntity<Map<String, Object>> deleteComment(@RequestBody Map map) {
 		String result = "SUCCESS";
 		Map<String, Object> resultMap = new HashMap<>();
 		HttpStatus status = HttpStatus.ACCEPTED;
 		
 		try {
-			int res = commentService.deleteComment(id);
 			
-			if(res == 0) {
+			String pwd = commentService.getCommentPassword((int)map.get("comment_id"));
+			
+			if(pwd == null) {
 				result = "FAIL";
+			} else if(map.get("password").equals(pwd)) {
+				int res = commentService.deleteComment((int)map.get("comment_id"));
+				if(res == 0) {
+					result = "FAIL";
+				} else {
+					result = "SUCCESS";
+				}
 			} else {
-				result = "SUCCESS";
+				result = "FAIL";
 			}
+			
 			
 			resultMap.put("message", result);
 			status = HttpStatus.ACCEPTED;

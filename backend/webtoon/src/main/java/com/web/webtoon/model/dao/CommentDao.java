@@ -14,4 +14,5 @@ public interface CommentDao {
 	
 	public int deleteComment(int id);
 	
+	public String getCommentPassword(int id);
 }
