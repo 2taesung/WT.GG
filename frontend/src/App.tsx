@@ -12,10 +12,15 @@ import Result from './Components/Result/Result';
 import NotFound from './Components/NotFound/NotFound';
 import Nav from "./Components/Navigation/Nav";
 
+import { WebtoonApi } from './API/Webtoon/WebtoonApi';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
+  window.scrollTo(0, 0);
+  WebtoonApi()
+
   return (
     <BrowserRouter>
       <Route component={Nav} />

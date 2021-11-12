@@ -1,0 +1,3 @@
+const RANKING_CATEGORY = "RANKING_CATEGORY";
+
+export default RANKING_CATEGORY;
