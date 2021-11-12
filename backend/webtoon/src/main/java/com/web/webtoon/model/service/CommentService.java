@@ -13,4 +13,6 @@ public interface CommentService {
 	public int insertComment(Map map) throws Exception;
 	
 	public int deleteComment(int id) throws Exception;
+	
+	public String getCommentPassword(int id) throws Exception;
 }
