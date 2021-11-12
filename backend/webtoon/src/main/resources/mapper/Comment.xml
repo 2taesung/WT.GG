@@ -23,6 +23,6 @@
 	
 	<update id="deleteComment" parameterType="int">
 		delete from comment
-		where id=#{id};
+		where id=#{comment_id};
 	</update>
 </mapper>

@@ -8,7 +8,7 @@ public class Comment {
 	private int post_id;
 	private int platform_id;
 	private int webtoon_id;
-	private String content;
+	private String comment;
 	private String writer;
 	private Timestamp date;
 	
@@ -42,11 +42,11 @@ public class Comment {
 	public void setWebtoon_id(int webtoon_id) {
 		this.webtoon_id = webtoon_id;
 	}
-	public String getContent() {
-		return content;
+	public String getComment() {
+		return comment;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setContent(String comment) {
+		this.comment = comment;
 	}
 	public String getWriter() {
 		return writer;
