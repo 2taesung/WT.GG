@@ -204,8 +204,6 @@ public class BoardController {
 			} else {
 				result = "FAIL";
 			}
-
-			System.out.println(map.get("password") + " " + pwd);
 			
 			resultMap.put("message", result);
 			status = HttpStatus.ACCEPTED;
