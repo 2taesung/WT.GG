@@ -7,24 +7,31 @@ import { Container, Row, Col } from "react-bootstrap";
 function RankingContents() {
   const data = useSelector((state: RootState) => state.WebtoonReducer);
   const category = useSelector((state: RootState) => state.RankingReducer);
+  console.log(data)
 
   var all = data.slice(0, 10)
-  var naver = []
-  var kakao = []
+  var romance_list = []
+  var drama_list = []
+  var life_list = []
+  var action_list = []
+  var thriller_list = []
 
-  var n_cnt = 0
-  var k_cnt = 0
   for (let i=0; i<data.length; i++) {
-    if (data[i]["platform_id"] === 1) {
-      n_cnt += 1
-      naver.push(data[i])
+    var temp = data[i]["genre"].split(",")
+    if (temp.includes("로맨스")) {
+      romance_list.push(data[i])
     }
-    else if (data[i]["platform_id"] === 2) {
-      k_cnt += 1
-      kakao.push(data[i])
+    else if (temp.includes("드라마")) {
+      drama_list.push(data[i])
     }
-    if (n_cnt >= 10 && k_cnt >= 10) {
-      break
+    else if (temp.includes("일상")) {
+      life_list.push(data[i])
+    }
+    else if (temp.includes("액션")) {
+      action_list.push(data[i])
+    }
+    else if (temp.includes("스릴러")) {
+      thriller_list.push(data[i])
     }
   }
 
@@ -32,10 +39,16 @@ function RankingContents() {
   var contents = all
   if (category === "all") {
     contents = all
-  } else if (category === "naver") {
-    contents = naver.slice(0, 10)
-  } else if (category === "kakao") {
-    contents = kakao.slice(0, 10)
+  } else if (category === "romance") {
+    contents = romance_list.slice(0, 10)
+  } else if (category === "drama") {
+    contents = drama_list.slice(0, 10)
+  } else if (category === "life") {
+    contents = life_list.slice(0, 10)
+  } else if (category === "action") {
+    contents = action_list.slice(0, 10)
+  } else if (category === "thriller") {
+    contents = thriller_list.slice(0, 10)
   }
 
   return (
@@ -52,12 +65,12 @@ function RankingContents() {
               <h5>{content["title"]}</h5>
             </div>      
             <div>    
-              <span className="fb">글/그림</span> {content["artist"]}&nbsp;  
-            </div>          
+              <span className="fb">작가</span> {content["artist"]}&nbsp;  
+            </div>    
+            <div>    
+              <span className="fb">장르</span> {content["genre"]}&nbsp;  
+            </div>            
           </Col>
-          {/* <Col className="ranking-score">
-            <h5>{content["score"]}</h5>
-          </Col> */}
         </Row>
         ))}
     </Container>
