@@ -6,7 +6,7 @@
 <mapper namespace="com.web.webtoon.model.dao.WebtoonDao">
 	<select id="getRankingList" resultType="Webtoon">
 		select w.platform_id,
-		w.title, w.link, w.image_link, w.genre, w.story, w.artist, w.score
+		w.title, w.link, w.image_link, w.genre, w.story, w.artist, w.score, w.id
 		from webtoon w
 		order by w.score desc;
 	</select>
