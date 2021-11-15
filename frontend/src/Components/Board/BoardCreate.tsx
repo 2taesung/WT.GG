@@ -15,27 +15,26 @@ class BoardCreate extends React.Component {
     webtoon_title: "",
     writer: "", 
     password: "",
-    webtoon_data: [],
+    webtoon_data: store.getState().WebtoonReducer,
     webtoon_platform: [{"title": ""}],
     webtoons: [],
     modal_platform: "",
     modal_webtoon: "",
+    loading: true
+  }
+
+  takeWebtoon = () => {
+    var temp_platform: any = []
+    for (let i=0; i<this.state.webtoon_data.length; i++) {
+      if (this.state.webtoon_data[i]["platform_id"] === 1) {
+        temp_platform.push(this.state.webtoon_data[i])
+      }
+    } 
+    this.setState({"webtoon_platform": temp_platform, "webtoons": temp_platform, "loading": false})
   }
 
   componentDidMount() {
-    store.subscribe(() => {
-      const data = store.getState().WebtoonReducer
-      this.setState({
-        "webtoon_data": data,
-      })
-      var temp_platform: any = []
-      for (let i=0; i<this.state.webtoon_data.length; i++) {
-        if (this.state.webtoon_data[i]["platform_id"] === 1) {
-          temp_platform.push(this.state.webtoon_data[i])
-        }
-      } 
-      this.setState({"webtoon_platform": temp_platform, "webtoons": temp_platform})
-    })
+    this.takeWebtoon();
   }
 
   // data 변경
@@ -105,13 +104,14 @@ class BoardCreate extends React.Component {
     .catch(err => {
       console.log(err.response.data.message)
       alert("글 작성에 실패하였습니다.")
-      console.log(this.state)
+      // console.log(this.state)
     })
   }
 
   // 검색 모달 열기
   onOpenModal = () => {
     document.querySelector(".create-modal-none")?.classList.remove("create-modal-none");
+    console.log(this.state.webtoon_data)
   }
 
   // 모달 닫기
@@ -120,7 +120,8 @@ class BoardCreate extends React.Component {
   }
 
   // 제출 버튼 클릭
-  onSubmitBoard = () => {
+  onSubmitBoard = (e: any) => {
+    e.preventDefault()
     const data = {
       "platform_id": this.state.platform_id,
       "webtoon_id": this.state.webtoon_id,
@@ -146,8 +147,9 @@ class BoardCreate extends React.Component {
   }
 
   render() {
-    const { platform_name, webtoon_title, title, contents, writer, password, webtoons, modal_webtoon } = this.state;
-    const search_icon = "/image/search.png"
+    const { platform_name, webtoon_title, title, contents, writer, password, webtoons, modal_webtoon, loading } = this.state;
+    const search_icon = "/image/search.png";
+    const loading_img = "/image/loading2.gif";
 
     return (
       <div className="content-wrapper">
@@ -167,6 +169,11 @@ class BoardCreate extends React.Component {
                 </Form.Select>
                 <input type="text" name="create-webtoon-title" value={modal_webtoon} onChange={this.onChangeWebtoon} />
                 <div className="c-modal-wetoons">
+                  {loading ? 
+                    <div>
+                      <img src={loading_img} alt="loading" />
+                    </div> : null
+                  }
                   {webtoons.map((item, idx) => (
                     <div key={idx} className="bc-modal-title" onClick={() => this.onPickWebtoon(item)}>{item["title"]}</div>
                   ))}

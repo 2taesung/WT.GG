@@ -17,7 +17,7 @@ function RankingContents() {
   var sexy_list = []
 
   for (let i=0; i<data.length; i++) {
-    var temp = data[i]["genre"](",")
+    var temp = data[i]["genre"].split(",")
     if (temp.includes("로맨스")) {
       romance_list.push(data[i])
     }
