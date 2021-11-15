@@ -51,16 +51,25 @@ function Board() {
 
   // 플랫폼 선택
   var naver: any = []
+  var kakao: any = []
+  var toomics: any = []
+  var lezhin: any = []
   for (let i=0; i<allBoard.length; i++) {
+    console.log(allBoard[i]["platform_name"])
     if (allBoard[i]["platform_name"] === "NAVER") {
       naver.push(allBoard[i])
     }
-  }
-
-  var kakao: any = []
-  for (let i=0; i<allBoard.length; i++) {
-    if (allBoard[i]["platform_name"] === "KAKAO") {
+    
+    if (allBoard[i]["platform_name"] === "KAKAOPAGE") {
       kakao.push(allBoard[i])
+    }
+  
+    if (allBoard[i]["platform_name"] === "TOOMICS") {
+      toomics.push(allBoard[i])
+    }
+  
+    if (allBoard[i]["platform_name"] === "LEZHIN") {
+      lezhin.push(allBoard[i])
     }
   }
 
@@ -68,11 +77,17 @@ function Board() {
     if (e.target.value === "all") {
       setBoard(allBoard)
     }
-    else if (e.target.value === "naver") {
+    else if (e.target.value === "1") {
       setBoard(naver)
     }
-    else if (e.target.value === "kakao") {
+    else if (e.target.value === "2") {
       setBoard(kakao)
+    }
+    else if (e.target.value === "3") {
+      setBoard(toomics)
+    }
+    else if (e.target.value === "4") {
+      setBoard(lezhin)
     }
     setCategory(category => e.target.value)
     boardSort()
@@ -136,8 +151,10 @@ function Board() {
         <span className="selectboxs d-flex">
           <Form.Select name="platforms" className="platform-select" size="sm" onChange={onSelectPlatform}>
             <option value="all">전체 플랫폼</option>
-            <option value="naver">네이버웹툰</option>
-            <option value="kakao">카카오웹툰</option>
+            <option value="1">네이버웹툰</option>
+            <option value="2">카카오웹툰</option>
+            <option value="3">투믹스</option>
+            <option value="4">레진코믹스</option>
           </Form.Select>
         </span>
         <span>
