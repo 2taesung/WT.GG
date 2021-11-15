@@ -1,8 +1,23 @@
 .TestCard-Card {
+  /* border: solid; */
+  background-color: white;
+  height: 500px;
+  width: 800px;
   display: flex;
   flex-direction: column;
-
   align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  margin-top: 150px;
+
+}
+
+.TestCard-Answer {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-around;
+  align-items: center;
+  height: 200px;
 }
 
 .TestCard-img {
@@ -10,11 +25,6 @@
   height: 200px;
 }
 
-.TestCard-Card {
-  display: flex;
-  align-items: center;
-
-}
 .Question {
   font-size: 20px;
 }
