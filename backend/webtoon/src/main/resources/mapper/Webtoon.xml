@@ -16,4 +16,13 @@
 		from webtoon
 		where id=#{id};
 	</select>
+	
+	<select id="getTestResult" parameterType="Map" resultType="Webtoon">
+		select id, drawing_style, humor, romance_ratio, genre, deployment_speed, material_novelty, webtoon_id,
+		drawing_style - #{drawing_style} + humor - #{humor} + romance_ratio - #{romance_ratio} 
+		+ genre - #{genre} + deployment_speed - #{deployment_speed} + material_novelty - #{material_novelty} as "total"
+		from characteristic
+		order by total asc
+		limit 1;
+	</select>
 </mapper>
