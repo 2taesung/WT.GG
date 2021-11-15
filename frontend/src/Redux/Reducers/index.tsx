@@ -7,7 +7,7 @@ const rootReducer = combineReducers({
   // Reducer들 추가
   MainReducer,
   WebtoonReducer,
-  RankingReducer
+  RankingReducer,
 });
 
 export default rootReducer;

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 class BoardCreate extends React.Component {
   state = {
     platform_id: 1,
-    webtoon_id: 45,
+    webtoon_id: 603,
     title: "", 
     contents: "",
     webtoon_title: "",
@@ -57,6 +57,7 @@ class BoardCreate extends React.Component {
     .catch(err => {
       console.log(err.response.data.message)
       alert("글 작성에 실패하였습니다.")
+      console.log(this.state)
     })
   }
 
@@ -66,7 +67,7 @@ class BoardCreate extends React.Component {
   }
 
   render() {
-    const { platform_id, webtoon_title, title, contents, writer, password  } = this.state;
+    const { webtoon_title, title, contents, writer, password  } = this.state;
 
     return (
       <div className="content-wrapper">
@@ -74,7 +75,7 @@ class BoardCreate extends React.Component {
         <hr />
         <div className="header-create">
           <span className="selectboxs d-flex">
-            <Form.Select name="platforms" value={platform_id} className="platform-select" size="sm" onChange={this.onSelectPlatform}>
+            <Form.Select name="platforms" className="platform-select" size="sm" onChange={this.onSelectPlatform}>
               <option value="naver">네이버웹툰</option>
               <option value="kakao">카카오웹툰</option>
             </Form.Select>
