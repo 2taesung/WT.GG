@@ -162,13 +162,17 @@ public class BoardController {
 	}
 	
 	@DeleteMapping("/delete")
-	public ResponseEntity<Map<String, Object>> deleteBoardContent(@RequestParam int id) {
+	public ResponseEntity<Map<String, Object>> deleteBoardContent(@RequestBody Map map) {
 		String result = "SUCCESS";
 		Map<String, Object> resultMap = new HashMap<>();
 		HttpStatus status = HttpStatus.ACCEPTED;
-		
+		int id = (int)map.get("id");
 		try {
-			int res = boardService.deleteBoardContent(id);
+			int res = 0;
+			String password = boardService.getBoardContentPassword(id) ;
+			if(map.get("password").equals(password)) {
+				res = boardService.deleteBoardContent(id);
+			}
 			
 			if(res == 0) {
 				result = "FAIL";
