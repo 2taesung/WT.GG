@@ -18,7 +18,7 @@ class BoardCreate extends React.Component {
     webtoon_data: store.getState().WebtoonReducer,
     webtoon_platform: [{"title": ""}],
     webtoons: [],
-    modal_platform: "",
+    modal_platform: "1",
     modal_webtoon: "",
     loading: true
   }
@@ -104,14 +104,12 @@ class BoardCreate extends React.Component {
     .catch(err => {
       console.log(err.response.data.message)
       alert("글 작성에 실패하였습니다.")
-      // console.log(this.state)
     })
   }
 
   // 검색 모달 열기
   onOpenModal = () => {
     document.querySelector(".create-modal-none")?.classList.remove("create-modal-none");
-    console.log(this.state.webtoon_data)
   }
 
   // 모달 닫기
