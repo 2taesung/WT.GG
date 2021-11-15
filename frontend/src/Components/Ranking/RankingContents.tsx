@@ -7,31 +7,31 @@ import { Container, Row, Col } from "react-bootstrap";
 function RankingContents() {
   const data = useSelector((state: RootState) => state.WebtoonReducer);
   const category = useSelector((state: RootState) => state.RankingReducer);
-  console.log(data)
+  // console.log(data)
 
   var all = data.slice(0, 10)
   var romance_list = []
   var drama_list = []
-  var life_list = []
+  var fantasy_list = []
   var action_list = []
-  var thriller_list = []
+  var sexy_list = []
 
   for (let i=0; i<data.length; i++) {
     var temp = data[i]["genre"].split(",")
     if (temp.includes("로맨스")) {
       romance_list.push(data[i])
     }
-    else if (temp.includes("드라마")) {
+    else if (temp.includes("드라마") || temp.includes("스토리")) {
       drama_list.push(data[i])
     }
-    else if (temp.includes("일상")) {
-      life_list.push(data[i])
+    else if (temp.includes("판타지")) {
+      fantasy_list.push(data[i])
     }
     else if (temp.includes("액션")) {
       action_list.push(data[i])
     }
-    else if (temp.includes("스릴러")) {
-      thriller_list.push(data[i])
+    else if (temp.includes("성인")) {
+      sexy_list.push(data[i])
     }
   }
 
@@ -43,13 +43,16 @@ function RankingContents() {
     contents = romance_list.slice(0, 10)
   } else if (category === "drama") {
     contents = drama_list.slice(0, 10)
-  } else if (category === "life") {
-    contents = life_list.slice(0, 10)
+  } else if (category === "fantasy") {
+    contents = fantasy_list.slice(0, 10)
   } else if (category === "action") {
     contents = action_list.slice(0, 10)
-  } else if (category === "thriller") {
-    contents = thriller_list.slice(0, 10)
+  } else if (category === "sexy") {
+    contents = sexy_list.slice(0, 10)
   }
+
+  console.log(romance_list)
+  console.log(category)
 
   return (
     <Container>
