@@ -17,7 +17,7 @@ function RankingContents() {
   var sexy_list = []
 
   for (let i=0; i<data.length; i++) {
-    var temp = data[i]["genre"].split(",")
+    var temp = data[i]["genre"](",")
     if (temp.includes("로맨스")) {
       romance_list.push(data[i])
     }
@@ -51,16 +51,16 @@ function RankingContents() {
     contents = sexy_list.slice(0, 10)
   }
 
-  console.log(romance_list)
-  console.log(category)
-
   return (
     <Container>
       {contents.map((content: any, idx: number) => (
         <Row className="ranking-content" key={idx}>
           <Col className="ranking-rank"><h5>{idx+1}</h5></Col>
           <Col className="ranking-wi">
-            {content["platform_id"] === 1 ? "네이버웹툰" : "카카오웹툰" }
+            {content["platform_id"] === 1 ? "네이버웹툰" : null }
+            {content["platform_id"] === 2 ? "카카오웹툰" : null }
+            {content["platform_id"] === 3 ? "투믹스" : null }
+            {content["platform_id"] === 4 ? "레진코믹스" : null }
             <img className="ranking-img" src={content["image_link"]} alt="webtoon-img" />
           </Col>
           <Col xs={7} className="ranking-body">
