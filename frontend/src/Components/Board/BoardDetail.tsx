@@ -14,11 +14,13 @@ function BoardDetail(props: any) {
     "contents": "",
     "writer": "",
   })
+
   const [comments, setComments] = useState([])
   const [password, setPassword] = useState("")
   const [passwordChk, setPasswordChk] = useState("")
-
-  const arrow = "/image/arrow.png"; 
+  const [newComment, setNewComment] = useState("");
+  const [cmtPassword, setCmtPassword] = useState("");
+  const [commentId, setCommentId] = useState(0)
 
 
   // API 공간 //
@@ -32,7 +34,7 @@ function BoardDetail(props: any) {
     .catch(err => {
       console.log(err.response)
     })
-  }
+  };
 
   const fetchChkPassword = async(data: any) => {
     const url = "http://localhost:8080/board/checkpwd"
@@ -43,23 +45,24 @@ function BoardDetail(props: any) {
     .catch(err => {
       console.log(err.response)
     })
-  }
+  };
 
   const fetchDelete = async(data: any) => {
-    console.log(data)
     const url = "http://localhost:8080/board/delete"
     await axios.delete(url, {data: data})
     .then(res => {
       if (res.data.message === "SUCCESS") {
         alert("게시물이 삭제되었습니다.")
         window.location.href = '/board';
+      } else {
+        alert("비밀번호가 틀렸습니다.")
       }
     })
     .catch(err => {
       alert("게시물 삭제에 실패하였습니다.")
       console.log(err.response)
     })
-  }
+  };
   
   const fetchCreateComment = async(data: any) => {
     const url = "http://localhost:8080/board/comment/write"
@@ -72,6 +75,24 @@ function BoardDetail(props: any) {
     .catch(err => {
       alert("댓글 작성에 실패하였습니다.")
       console.log(err.response)      
+    })
+  };
+
+  const fetchDeleteComment = async(data: any) => {
+    const url = "http://localhost:8080/board/comment/delete"
+    await axios.delete(url, {data: data})
+    .then(res => {
+      if (res.data.message === "SUCCESS") {
+        alert("댓글이 삭제되었습니다.")        
+        onClosePasswordModal()
+      } else {
+        alert("비밀번호가 틀렸습니다.")
+      }
+      setPassword("")
+    })
+    .catch(err => {
+      alert("댓글 삭제에 실패하였습니다.")
+      console.log(err.response)
     })
   }
 
@@ -90,8 +111,15 @@ function BoardDetail(props: any) {
       "id": parseInt(id),
       "password": password
     }
+    const dataCommentPassword = {
+      "comment_id": commentId,
+      "password": password
+    }
+
     if (passwordChk === "delete") {
       fetchDelete(dataPassword)
+    } else if (passwordChk === "deleteComment") {
+      fetchDeleteComment(dataCommentPassword)
     } else {
       fetchChkPassword(dataPassword)
     }    
@@ -119,9 +147,6 @@ function BoardDetail(props: any) {
   }
 
   // 댓글 작성
-  const [newComment, setNewComment] = useState("");
-  const [cmtPassword, setCmtPassword] = useState("");
-
   const onChangeComment = (e: any) => {
     setNewComment(e.target.value);
   }
@@ -143,6 +168,16 @@ function BoardDetail(props: any) {
     }
   }
 
+  // 댓글 삭제
+  const onDeleteComment = (id: number) => {
+    setPasswordChk("deleteComment");
+    setPassword("")
+    setCommentId(id)
+    document.querySelector(".password-modal-none")?.classList.remove("password-modal-none");
+  }
+  
+  const arrow = "/image/arrow.png"; 
+
   return (
     <div className="content-wrapper">
       <div className="password-modal password-modal-none">
@@ -153,7 +188,7 @@ function BoardDetail(props: any) {
             </Modal.Header>
 
             <Modal.Body className="pw-modal-body">
-              <input type="password" name="password-confirmation" onChange={onChangePw} />
+              <input type="password" name="password-confirmation" value={password} onChange={onChangePw} />
             </Modal.Body>
 
             <Modal.Footer>
@@ -194,7 +229,7 @@ function BoardDetail(props: any) {
           {comments.map((item, idx) => (
             <tr className="comment-table" key={idx}>   
               <td className="comment-content">{item["comment"]}</td>
-              <td><Button variant="secondary">삭제</Button></td>
+              <td><Button variant="secondary" className="delete-btn" onClick={() => onDeleteComment(item["id"])}>삭제</Button></td>
             </tr>
           ))}
         </tbody>

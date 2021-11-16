@@ -55,7 +55,6 @@ function Board() {
   var toomics: any = []
   var lezhin: any = []
   for (let i=0; i<allBoard.length; i++) {
-    console.log(allBoard[i]["platform_name"])
     if (allBoard[i]["platform_name"] === "NAVER") {
       naver.push(allBoard[i])
     }

@@ -200,6 +200,17 @@ td a {
     margin: 0 1rem;
 }
 
+.delete-btn {
+    background-color: #B1E693;
+    border: 1px solid #B1E693;
+}
+
+.delete-btn:hover {
+    background-color: #fff;
+    color: #B1E693;
+    border: 1px solid #B1E693;
+}
+
 /* 모달 */
 .password-modal-none {
     display: none;
