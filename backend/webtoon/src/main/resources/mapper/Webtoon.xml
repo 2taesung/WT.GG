@@ -18,11 +18,22 @@
 	</select>
 	
 	<select id="getTestResult" parameterType="Map" resultType="Webtoon">
-		select id, drawing_style, humor, romance_ratio, genre, deployment_speed, material_novelty, webtoon_id,
-		drawing_style - #{drawing_style} + humor - #{humor} + romance_ratio - #{romance_ratio} 
-		+ genre - #{genre} + deployment_speed - #{deployment_speed} + material_novelty - #{material_novelty} as "total"
+		
+		select id, drawing_style, humor, romance_ratio, genre as genre_score, deployment_speed, material_novelty, webtoon_id,
+			(drawing_style - #{drawing_style} + humor - #{humor} + romance_ratio - #{romance_ratio} 
+			+ genre - #{genre} + deployment_speed - #{deployment_speed} + material_novelty - #{material_novelty}) as total,
+			<![CDATA[
+			(case
+				when (drawing_style - #{drawing_style} + humor - #{humor} + romance_ratio - #{romance_ratio} 
+			+ genre - #{genre} + deployment_speed - #{deployment_speed} + material_novelty - #{material_novelty}) < 0
+			    then (drawing_style - #{drawing_style} + humor - #{humor} + romance_ratio - #{romance_ratio} 
+			+ genre - #{genre} + deployment_speed - #{deployment_speed} + material_novelty - #{material_novelty}) * -1
+			    else (drawing_style - #{drawing_style} + humor - #{humor} + romance_ratio - #{romance_ratio} 
+			+ genre - #{genre} + deployment_speed - #{deployment_speed} + material_novelty - #{material_novelty})
+			end) as score
+			]]>
 		from characteristic
-		order by total asc
+		order by score asc
 		limit 1;
 	</select>
 </mapper>
