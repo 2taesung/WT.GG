@@ -100,8 +100,8 @@ public class WebtoonController {
 			map.put("deployment_speed", list.get(4));
 			map.put("material_novelty", list.get(5));
 			Webtoon webtoon = webtoonService.getTestResult(map);
-			resultMap.put("result_webtoon_id", webtoon.getWebtoon_id());
-			resultMap.put("gwebtoon", webtoon);
+			resultMap.put("result_webtoon_id", webtoon.getId());
+			resultMap.put("webtoon", webtoon);
 			
 			if(webtoon == null) {
 				result = "FAIL";

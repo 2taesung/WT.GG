@@ -19,20 +19,22 @@
 	
 	<select id="getTestResult" parameterType="Map" resultType="Webtoon">
 		
-		select id, drawing_style, humor, romance_ratio, genre as genre_score, deployment_speed, material_novelty, webtoon_id,
-			(drawing_style - #{drawing_style} + humor - #{humor} + romance_ratio - #{romance_ratio} 
-			+ genre - #{genre} + deployment_speed - #{deployment_speed} + material_novelty - #{material_novelty}) as total,
+		select c.id as characteristic, c.drawing_style, c.humor, c.romance_ratio, c.genre as genre_score, c.deployment_speed, c.material_novelty, c.webtoon_id as id,
+			(c.drawing_style - #{drawing_style} + c.humor - #{humor} + c.romance_ratio - #{romance_ratio} 
+			+ c.genre - #{genre} + c.deployment_speed - #{deployment_speed} + c.material_novelty - #{material_novelty}) as total,
 			<![CDATA[
 			(case
-				when (drawing_style - #{drawing_style} + humor - #{humor} + romance_ratio - #{romance_ratio} 
-			+ genre - #{genre} + deployment_speed - #{deployment_speed} + material_novelty - #{material_novelty}) < 0
-			    then (drawing_style - #{drawing_style} + humor - #{humor} + romance_ratio - #{romance_ratio} 
-			+ genre - #{genre} + deployment_speed - #{deployment_speed} + material_novelty - #{material_novelty}) * -1
-			    else (drawing_style - #{drawing_style} + humor - #{humor} + romance_ratio - #{romance_ratio} 
-			+ genre - #{genre} + deployment_speed - #{deployment_speed} + material_novelty - #{material_novelty})
+				when (c.drawing_style - #{drawing_style} + c.humor - #{humor} + c.romance_ratio - #{romance_ratio} 
+			+ c.genre - #{genre} + c.deployment_speed - #{deployment_speed} + c.material_novelty - #{material_novelty}) < 0
+			    then (c.drawing_style - #{drawing_style} + c.humor - #{humor} + c.romance_ratio - #{romance_ratio} 
+			+ c.genre - #{genre} + c.deployment_speed - #{deployment_speed} + c.material_novelty - #{material_novelty}) * -1
+			    else (c.drawing_style - #{drawing_style} + c.humor - #{humor} + c.romance_ratio - #{romance_ratio} 
+			+ c.genre - #{genre} + c.deployment_speed - #{deployment_speed} + c.material_novelty - #{material_novelty})
 			end) as score
-			]]>
-		from characteristic
+			]]>,
+			w.title, w.link, w.image_link, w.genre, w.story, w.platform_id,  w.artist
+		from characteristic c, webtoon w
+		where c.webtoon_id = w.id 
 		order by score asc
 		limit 1;
 	</select>
