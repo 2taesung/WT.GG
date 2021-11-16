@@ -7,7 +7,6 @@ import { Container, Row, Col } from "react-bootstrap";
 function RankingContents() {
   const data = useSelector((state: RootState) => state.WebtoonReducer);
   const category = useSelector((state: RootState) => state.RankingReducer);
-  // console.log(data)
 
   var all = data.slice(0, 10)
   var romance_list = []
@@ -51,10 +50,14 @@ function RankingContents() {
     contents = sexy_list.slice(0, 10)
   }
 
+  const onClickContent = (id: number) => {
+    window.location.href=`/result/${id}`
+  };
+
   return (
     <Container>
       {contents.map((content: any, idx: number) => (
-        <Row className="ranking-content" key={idx}>
+        <Row className="ranking-content" key={idx} onClick={() => onClickContent(content["id"])}>
           <Col className="ranking-rank"><h5>{idx+1}</h5></Col>
           <Col className="ranking-wi">
             {content["platform_id"] === 1 ? "네이버웹툰" : null }
