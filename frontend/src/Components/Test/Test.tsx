@@ -9,40 +9,38 @@ import testData from './test_data.json';
 
 
 function Test() {
-
-    const data = testData
-    let [i, i변경] = useState(0);
-    let [arr, arr변경] = useState<any[]>([]);
-    function 투표(i:number, a:number) {
-      if (i===6) {
-        console.log(arr)
+  const data = testData
+  let [i, i변경] = useState(0);
+  let [arr, arr변경] = useState<any[]>([]);
+  function 투표(i:number, a:number) {
+    if (i===6) {
+      console.log(arr)
+    
+      const url = "http://localhost:8080/webtoon/test"
       
-        const url = "http://localhost:8080/webtoon/test"
-        
-        axios.post(url, arr)
-        .then(res => {
-          console.log(res)
-          if (res.data["message"] === "SUCCESS") {
-            alert("테스트 정보가 입력되었습니다.")
-            let webtoon_id = res.data["result_webtoon_id"]
-            console.log(webtoon_id)
-            window.location.replace('/result')
-            window.location.replace(`/result/${webtoon_id}`)
-          }
-        })
-        .catch(err => {
-          console.log(err.response.data.message)
-          alert("실패했습니다.")
-          console.log(arr)
-        })
-      } else {
+      axios.post(url, arr)
+      .then(res => {
+        console.log(res)
+        if (res.data["message"] === "SUCCESS") {
+          console.log("테스트 정/보가 입력되었습니다.")
+          let webtoon_id = res.data["result_webtoon_id"]
+          console.log(webtoon_id)
+          
+          window.location.replace(`/result/${webtoon_id}`)
+        }
+      })
+      .catch(err => {
+        console.log(err.response.data.message)
+        alert("실패했습니다.")
+        console.log(arr)
+      })
+    } else {
+      i변경(i+1);
 
-        i변경(i+1);
-  
-        var newArray = [...arr];
-        newArray.push(a)
-        arr변경(newArray)
-        console.log(newArray)
+      var newArray = [...arr];
+      newArray.push(a)
+      arr변경(newArray)
+      console.log(newArray)
       }
     }
 
@@ -74,6 +72,6 @@ function Test() {
         
       </div>
     );
-  }
+}
 
 export default Test;
