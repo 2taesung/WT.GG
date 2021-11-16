@@ -143,7 +143,7 @@ function Board() {
   return (
     <div className="content-wrapper">
       <div className={loading === "load" ? "loading" : "hide"}>
-        <img src={loading_img} alt="laoding" />
+        <img src={loading_img} alt="loading" />
       </div>
       <h2 className="board-header">Board</h2>
       <hr />

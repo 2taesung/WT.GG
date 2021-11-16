@@ -20,6 +20,8 @@ function BoardDetail(props: any) {
 
   const arrow = "/image/arrow.png"; 
 
+
+  // API 공간 //
   const fetchBoardDetail = async() => {
     const url = `http://localhost:8080/board/content?id=${id}`
     await axios.get(url)
@@ -54,9 +56,27 @@ function BoardDetail(props: any) {
       }
     })
     .catch(err => {
+      alert("게시물 삭제에 실패하였습니다.")
       console.log(err.response)
     })
   }
+  
+  const fetchCreateComment = async(data: any) => {
+    const url = "http://localhost:8080/board/comment/write"
+    await axios.post(url, data)
+    .then(res => {
+      alert("댓글이 작성되었습니다.")
+      setNewComment("");
+      setCmtPassword("");
+    })
+    .catch(err => {
+      alert("댓글 작성에 실패하였습니다.")
+      console.log(err.response)      
+    })
+  }
+
+  // API 공간 //
+
 
   fetchBoardDetail()
 
@@ -77,26 +97,50 @@ function BoardDetail(props: any) {
     }    
   }
 
+  // 게시물 수정 버튼
   const goUpdate = () => {
     setPasswordChk("update")
-    // 1. 비밀번호 체크
     setPassword("")
     document.querySelector(".password-modal-none")?.classList.remove("password-modal-none");
     // 2. 비밀번호 성공 후, 수정 폼
     // window.location.href = `/board/${id}/update`;
   }
 
+  // 게시물 삭제 버튼
+  const onDeleteBoard = () => {
+    setPasswordChk("delete");
+    setPassword("")
+    document.querySelector(".password-modal-none")?.classList.remove("password-modal-none");
+  }
+
+  // 모달 닫기
   const onClosePasswordModal = () => {
     document.querySelector(".password-modal")?.classList.add("password-modal-none");
   }
 
-  // 게시물 삭제
-  const onDeleteBoard = () => {
-    setPasswordChk("delete");
-    // 1. 비밀번호 입력
-    setPassword("")
-    document.querySelector(".password-modal-none")?.classList.remove("password-modal-none");
-    // 2. 삭제
+  // 댓글 작성
+  const [newComment, setNewComment] = useState("");
+  const [cmtPassword, setCmtPassword] = useState("");
+
+  const onChangeComment = (e: any) => {
+    setNewComment(e.target.value);
+  }
+
+  const commentPassword = (e: any) => {
+    setCmtPassword(e.target.value);
+  }
+
+  const createComment = () => {
+    const data = {
+      "board_id": id,
+      "comment_content": newComment,
+      "comment_password": cmtPassword
+    }
+    if (newComment === "" || cmtPassword === "") {
+      alert("댓글과 비밀번호를 작성해주세요.")
+    } else {
+      fetchCreateComment(data)
+    }
   }
 
   return (
@@ -156,9 +200,10 @@ function BoardDetail(props: any) {
         </tbody>
       </table>
       <div className="create-comment mx-3">
-        <textarea className="mx-3 mt-1 comment-textarea"></textarea>
+        <textarea className="mx-3 mt-1 comment-textarea" value={newComment} onChange={onChangeComment} />
         <div className="wrap-btn">
-        <Button className="small-btn" variant="secondary">등록</Button>
+          <input type="password" id="comment-password" value={cmtPassword} onChange={commentPassword} placeholder="비밀번호" />
+          <Button className="small-btn" variant="secondary" onClick={createComment}>등록</Button>
         </div>
       </div>
     </div>
