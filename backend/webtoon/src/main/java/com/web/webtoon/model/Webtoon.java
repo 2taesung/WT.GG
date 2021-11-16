@@ -10,23 +10,16 @@ public class Webtoon {
 	private String image_link;
 	private String genre;
 	private String story;
-	private int review_score;
-	private int views_score;
+	private int drawing_style;
+	private int humor;
+	private int romance_ratio;
+	private int genre_score;
+	private int deployment_speed;
+	private int material_novelty;
 	private float score;
 	private String artist;
+	private int webtoon_id;
 	
-	public int getReview_score() {
-		return review_score;
-	}
-	public void setReview_score(int review_score) {
-		this.review_score = review_score;
-	}
-	public int getViews_score() {
-		return views_score;
-	}
-	public void setViews_score(int views_score) {
-		this.views_score = views_score;
-	}
 	public float getTotal() {
 		return score;
 	}
@@ -93,6 +86,48 @@ public class Webtoon {
 	}
 	public void setArtist(String artist) {
 		this.artist = artist;
+	}
+	public int getWebtoon_id() {
+		return webtoon_id;
+	}
+	public void setWebtoon_id(int webtoon_id) {
+		this.webtoon_id = webtoon_id;
+	}
+	public int getDrawing_style() {
+		return drawing_style;
+	}
+	public void setDrawing_style(int drawing_style) {
+		this.drawing_style = drawing_style;
+	}
+	public int getHumor() {
+		return humor;
+	}
+	public void setHumor(int humor) {
+		this.humor = humor;
+	}
+	public int getRomance_ratio() {
+		return romance_ratio;
+	}
+	public void setRomance_ratio(int romance_ratio) {
+		this.romance_ratio = romance_ratio;
+	}
+	public int getGenre_score() {
+		return genre_score;
+	}
+	public void setGenre_score(int genre_score) {
+		this.genre_score = genre_score;
+	}
+	public int getDeployment_speed() {
+		return deployment_speed;
+	}
+	public void setDeployment_speed(int deployment_speed) {
+		this.deployment_speed = deployment_speed;
+	}
+	public int getMaterial_novelty() {
+		return material_novelty;
+	}
+	public void setMaterial_novelty(int material_novelty) {
+		this.material_novelty = material_novelty;
 	}
 	
 }
