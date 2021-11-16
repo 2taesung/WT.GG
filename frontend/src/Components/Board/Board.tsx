@@ -110,20 +110,32 @@ function Board() {
     var temp_board: any = []
     if (category === "all") {
       for (let j=0; j<allBoard.length; j++) {
-        if (allBoard[j]["webtoon_title"].includes(keyword) || allBoard[j]["title"].includes(keyword)) {
+        if (allBoard[j]["webtoon_title"].includes(keyword) || allBoard[j]["title"].includes(keyword) || allBoard[j]["writer"].includes(keyword)) {
           temp_board.push(allBoard[j])
         }
       }
-    } else if (category === "naver") {
+    } else if (category === "1") {
       for (let j=0; j<naver.length; j++) {
-        if (naver[j]["webtoon_title"].includes(keyword) || naver[j]["title"].includes(keyword)) {
+        if (naver[j]["webtoon_title"].includes(keyword) || naver[j]["title"].includes(keyword) || naver[j]["writer"].includes(keyword)) {
           temp_board.push(naver[j])
         }
       }
-    } else if (category === "kakao") {
+    } else if (category === "2") {
       for (let j=0; j<kakao.length; j++) {
-        if (kakao[j]["webtoon_title"].includes(keyword) || kakao[j]["title"].includes(keyword)) {
+        if (kakao[j]["webtoon_title"].includes(keyword) || kakao[j]["title"].includes(keyword) || kakao[j]["writer"].includes(keyword)) {
           temp_board.push(kakao[j])
+        }
+      }
+    } else if (category === "3") {
+      for (let j=0; j<toomics.length; j++) {
+        if (toomics[j]["webtoon_title"].includes(keyword) || toomics[j]["title"].includes(keyword) || toomics[j]["writer"].includes(keyword)) {
+          temp_board.push(toomics[j])
+        }
+      }
+    } else if (category === "4") {
+      for (let j=0; j<lezhin.length; j++) {
+        if (lezhin[j]["webtoon_title"].includes(keyword) || lezhin[j]["title"].includes(keyword) || lezhin[j]["writer"].includes(keyword)) {
+          temp_board.push(lezhin[j])
         }
       }
     }
