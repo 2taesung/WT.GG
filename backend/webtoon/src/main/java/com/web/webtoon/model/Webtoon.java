@@ -18,7 +18,6 @@ public class Webtoon {
 	private int material_novelty;
 	private float score;
 	private String artist;
-	private int webtoon_id;
 	
 	public float getTotal() {
 		return score;
@@ -86,12 +85,6 @@ public class Webtoon {
 	}
 	public void setArtist(String artist) {
 		this.artist = artist;
-	}
-	public int getWebtoon_id() {
-		return webtoon_id;
-	}
-	public void setWebtoon_id(int webtoon_id) {
-		this.webtoon_id = webtoon_id;
 	}
 	public int getDrawing_style() {
 		return drawing_style;
