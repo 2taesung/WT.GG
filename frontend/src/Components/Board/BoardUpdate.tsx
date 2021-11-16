@@ -42,6 +42,7 @@ function BoardUpdate(props: any) {
     await axios.put(url, data)
     .then(res => {
       alert("수정이 완료되었습니다.")
+      sessionStorage.removeItem("update");
       window.location.replace(`/board/${id}`)
     })
     .catch(err => {
@@ -68,6 +69,7 @@ function BoardUpdate(props: any) {
 
   // 취소 버튼 클릭
   const onCancelUpdate = () => {
+    sessionStorage.removeItem("update");
     window.location.replace(`/board/${id}`)
   };
 
@@ -92,7 +94,6 @@ function BoardUpdate(props: any) {
     if (data["password"] === "") {
       alert("비밀번호를 입력해주세요.")
     } else {
-      console.log(data)
       fetchUpdate(data);
     }
   }

@@ -42,6 +42,7 @@ function BoardDetail(props: any) {
     await axios.post(url, data)
     .then(res => {
       if (res.data.message === "SUCCESS") {
+        sessionStorage.setItem("update", "true");
         window.location.href = `/board/${id}/update`
       } else {
         alert("비밀번호가 틀렸습니다.")
