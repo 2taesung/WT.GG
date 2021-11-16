@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
+import PrivateRoute from './lib/PrivateRoute';
+
 import Main from './Components/Main/Main';
 import Board from './Components/Board/Board';
 import BoardCreate from './Components/Board/BoardCreate';
@@ -31,7 +33,7 @@ function App() {
         <Route path="/ranking" component={Ranking} exact={true} />
         <Route path="/board/create" component={BoardCreate} exact={true} />
         <Route path="/board/:id" component={BoardDetail} exact={true} />
-        <Route path="/board/:id/update" component={BoardUpdate} exact={true} />
+        <PrivateRoute path="/board/:id/update" component={BoardUpdate} exact={true} />
         <Route path="/board/result" component={BoardCreate} exact={true} />
         <Route path="/result/:id" component={Result} exact={true} />
         <Route component={NotFound} />
