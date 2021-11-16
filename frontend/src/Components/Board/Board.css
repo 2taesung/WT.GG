@@ -318,6 +318,10 @@ a {
     margin: 0 1rem;
 }
 
+.update-block {
+    background-color: lightgray;
+}
+
 /* 모달 */
 .create-modal-none {
     display: none;

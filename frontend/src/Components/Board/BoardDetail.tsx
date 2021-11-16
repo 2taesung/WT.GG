@@ -21,7 +21,8 @@ function BoardDetail(props: any) {
   const [newComment, setNewComment] = useState("");
   const [cmtPassword, setCmtPassword] = useState("");
   const [commentId, setCommentId] = useState(0)
-
+  
+  const comment_length = comments.length;
 
   // API 공간 //
   const fetchBoardDetail = async() => {
@@ -40,7 +41,11 @@ function BoardDetail(props: any) {
     const url = "http://localhost:8080/board/checkpwd"
     await axios.post(url, data)
     .then(res => {
-      console.log(res.data.message)
+      if (res.data.message === "SUCCESS") {
+        window.location.href = `/board/${id}/update`
+      } else {
+        alert("비밀번호가 틀렸습니다.")
+      }
     })
     .catch(err => {
       console.log(err.response)
@@ -129,9 +134,7 @@ function BoardDetail(props: any) {
   const goUpdate = () => {
     setPasswordChk("update")
     setPassword("")
-    document.querySelector(".password-modal-none")?.classList.remove("password-modal-none");
-    // 2. 비밀번호 성공 후, 수정 폼
-    // window.location.href = `/board/${id}/update`;
+    document.querySelector(".password-modal-none")?.classList.remove("password-modal-none");   
   }
 
   // 게시물 삭제 버튼
@@ -222,7 +225,7 @@ function BoardDetail(props: any) {
       </div>
       <div className="detail-content m-3">{data["contents"]}</div>
 
-      <div className="m-3">댓글</div>
+      <div className="m-3">댓글  {comment_length}</div>
 
       <table className="table detail-comment m-3">
         <tbody>
