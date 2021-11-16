@@ -211,6 +211,11 @@ td a {
     border: 1px solid #B1E693;
 }
 
+#pre-font {
+    font-family: 'GowunDodum-Regular';
+    font-size: 1rem;
+}
+
 /* 모달 */
 .password-modal-none {
     display: none;

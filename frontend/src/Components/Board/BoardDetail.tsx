@@ -172,6 +172,14 @@ function BoardDetail(props: any) {
     }
   }
 
+  // 엔터 검색
+  const onEnterSearch = (e: any) => {
+    e.preventDefault()
+    if (e.keyCode === 13) {
+      onChkPassword()
+    }
+  }
+
   // 댓글 삭제
   const onDeleteComment = (id: number) => {
     setPasswordChk("deleteComment");
@@ -192,7 +200,7 @@ function BoardDetail(props: any) {
             </Modal.Header>
 
             <Modal.Body className="pw-modal-body">
-              <input type="password" name="password-confirmation" value={password} onChange={onChangePw} />
+              <input type="password" name="password-confirmation" value={password} onChange={onChangePw} onKeyUp={onEnterSearch} />
             </Modal.Body>
 
             <Modal.Footer>
@@ -224,7 +232,7 @@ function BoardDetail(props: any) {
           <Button className="small-btn" variant="secondary" onClick={onDeleteBoard}>삭제</Button>
         </span>
       </div>
-      <div className="detail-content m-3">{data["contents"]}</div>
+      <div className="detail-content m-3"><pre id="pre-font">{data["contents"]}</pre></div>
 
       <div className="m-3">댓글  {comment_length}</div>
 
