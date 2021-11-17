@@ -22,7 +22,7 @@ function Test() {
       .then(res => {
         console.log(res)
         if (res.data["message"] === "SUCCESS") {
-          console.log("테스트 정/보가 입력되었습니다.")
+          console.log("테스트 정보가 입력되었습니다.")
           let webtoon_id = res.data["result_webtoon_id"]
           console.log(webtoon_id)
           
