@@ -13,8 +13,8 @@
 	
 	<select id="getWebtoonDetail" parameterType="int" resultType="Webtoon">
 		select *
-		from webtoon
-		where id=#{id};
+		from webtoon w, characteristic c
+		where w.id=#{id} and c.webtoon_id = #{id};
 	</select>
 	
 	<select id="getTestResult" parameterType="Map" resultType="Webtoon">
