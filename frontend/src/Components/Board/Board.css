@@ -155,7 +155,8 @@ td a {
 }
 
 .detail-content {
-    height: 320px;
+    height: auto;
+    margin: 3rem 1rem !important;
 }
 
 .detail-comment {
@@ -173,6 +174,9 @@ td a {
 
 .comment-content {
     flex-grow: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .create-comment {
@@ -397,7 +401,7 @@ a {
         visibility: hidden;
     }
     .small-btn {
-        padding: 0.02rem 0.02rem;
+        padding: 0.02rem 0.5rem;
     }
     .form-select-sm {
         padding-top: 0;
@@ -458,6 +462,5 @@ a {
     }
     .btns {
         margin-top: 0!important;
-        flex-direction: column;
     }
   }

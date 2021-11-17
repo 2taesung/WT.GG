@@ -90,6 +90,7 @@ function Board() {
     }
     setCategory(category => e.target.value)
     boardSort()
+    setKeyword("")
   }
 
   // 키워드 검색
