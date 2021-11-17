@@ -12,16 +12,16 @@ function ResultBottom(props:any) {
   //   "drawing_style": "현실성", "humor": "아재개그", 
   //   "emotion": "뭉클"}
   // console.log(props.webtoonInfo)
-  // console.log(props.webtoonInfo['score'])
-
+  console.log(props.webtoonInfo['score'])
+  let gauge_score = props.webtoonInfo['score']
   const chkImg = "/image/chk.png"
 
   return (
     <div className="result-bottom-container">
       <div className="result-bottom-left">
-        <div className="gauge red" data-value="158" data-ceil="200">
+        <div className="gauge red" data-value="{gauge_score}" data-ceil="10">
           <div className="gauge-value">
-            <span className="gauge-cnt"></span>visitors online
+            <span className="gauge-cnt"></span>평점
             <span className="gauge-ceil"></span>
           </div>
           <div className="gauge-center"></div>
@@ -29,8 +29,6 @@ function ResultBottom(props:any) {
           <div className="gauge-background"></div>
         </div>
 
-
-        <h1>{props.webtoonInfo['id']}</h1>
       </div>
       <Container className="result-bottom-right">
         <Row className="result-bottom-contents">
@@ -38,8 +36,6 @@ function ResultBottom(props:any) {
             <h5 className="fb">그림체</h5>
           </Col>
           <Col xs={8} className="result-bottom-item">
-            <img src={chkImg} alt="chk" className="result-chk" />
-            <div className="result-hr"/>
             <p>{props.webtoonInfo["drawing_style"]}</p>
           </Col>
         </Row>

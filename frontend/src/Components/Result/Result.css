@@ -82,8 +82,8 @@
 .result-top-left {
   display: flex;
   flex-direction: column;
-  width: 30vw;
-  height: 30vw;
+  width: 20vw;
+  height: 20vw;
   margin: 0;
 }
 
