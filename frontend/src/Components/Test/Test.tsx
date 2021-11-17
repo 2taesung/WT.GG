@@ -55,18 +55,15 @@ function Test() {
           
           <br />
           <div className="TestCard-Answer">
-            <br />
-            
-            <button className="bubbly-button" onClick={ ()=>{ 투표(i, 20) }} >{data[i]["answer1"]}</button>
-            <br />
-            <button className="bubbly-button" onClick={ ()=>{ 투표(i, 40) }}>{data[i]["answer2"]}</button>
-            <br />
-            <button className="bubbly-button" onClick={ ()=>{ 투표(i, 60) }}>{data[i]["answer3"]}</button>
-            <br />
-            <button className="bubbly-button" onClick={ ()=>{ 투표(i, 80) }}>{data[i]["answer4"]}</button>
-            <br />
-            <button className="bubbly-button" onClick={ ()=>{ 투표(i, 100) }}>{data[i]["answer5"]}</button>
-
+            <div className="test-box">
+              <button className="bubbly-button" onClick={ ()=>{ 투표(i, 20) }} >{data[i]["answer1"]}</button>
+              <button className="bubbly-button" onClick={ ()=>{ 투표(i, 40) }}>{data[i]["answer2"]}</button>
+              <button className="bubbly-button" onClick={ ()=>{ 투표(i, 60) }}>{data[i]["answer3"]}</button>
+            </div>
+            <div className="test-box">
+              <button className="bubbly-button" onClick={ ()=>{ 투표(i, 80) }}>{data[i]["answer4"]}</button>
+              <button className="bubbly-button" onClick={ ()=>{ 투표(i, 100) }}>{data[i]["answer5"]}</button>
+            </div>
           </div>
         </div>
         

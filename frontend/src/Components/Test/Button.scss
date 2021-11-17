@@ -4,7 +4,6 @@ $button-text-color: #fff;
 $baby-blue: #f8faff;
 
 .bubbly-button{
-  font-family: 'Helvetica', 'Arial', sans-serif;
   display: inline-block;
   font-size: 1em;
   padding: 1em 2em;
@@ -21,7 +20,7 @@ $baby-blue: #f8faff;
   cursor: pointer;
   position: relative;
   transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
-  box-shadow: 0 2px 25px rgba(7, 216, 60, 0.5);
+  box-shadow: 0 2px 25px rgba(236, 156, 211, 0.5);
   
   &:focus {
     outline: 0;
