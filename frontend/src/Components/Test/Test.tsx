@@ -22,7 +22,7 @@ function Test() {
       .then(res => {
         console.log(res)
         if (res.data["message"] === "SUCCESS") {
-          console.log("테스트 정/보가 입력되었습니다.")
+          console.log("테스트 정보가 입력되었습니다.")
           let webtoon_id = res.data["result_webtoon_id"]
           console.log(webtoon_id)
           
@@ -55,18 +55,15 @@ function Test() {
           
           <br />
           <div className="TestCard-Answer">
-            <br />
-            
-            <button className="bubbly-button" onClick={ ()=>{ 투표(i, 20) }} >{data[i]["answer1"]}</button>
-            <br />
-            <button className="bubbly-button" onClick={ ()=>{ 투표(i, 40) }}>{data[i]["answer2"]}</button>
-            <br />
-            <button className="bubbly-button" onClick={ ()=>{ 투표(i, 60) }}>{data[i]["answer3"]}</button>
-            <br />
-            <button className="bubbly-button" onClick={ ()=>{ 투표(i, 80) }}>{data[i]["answer4"]}</button>
-            <br />
-            <button className="bubbly-button" onClick={ ()=>{ 투표(i, 100) }}>{data[i]["answer5"]}</button>
-
+            <div className="test-box">
+              <button className="bubbly-button" onClick={ ()=>{ 투표(i, 20) }} >{data[i]["answer1"]}</button>
+              <button className="bubbly-button" onClick={ ()=>{ 투표(i, 40) }}>{data[i]["answer2"]}</button>
+              <button className="bubbly-button" onClick={ ()=>{ 투표(i, 60) }}>{data[i]["answer3"]}</button>
+            </div>
+            <div className="test-box">
+              <button className="bubbly-button" onClick={ ()=>{ 투표(i, 80) }}>{data[i]["answer4"]}</button>
+              <button className="bubbly-button" onClick={ ()=>{ 투표(i, 100) }}>{data[i]["answer5"]}</button>
+            </div>
           </div>
         </div>
         

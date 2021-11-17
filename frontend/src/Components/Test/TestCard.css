@@ -1,23 +1,22 @@
 .TestCard-Card {
   /* border: solid; */
   background-color: white;
-  height: 500px;
+  height: 60vh;
   width: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   border-radius: 50px;
-  margin-top: 150px;
-
 }
 
 .TestCard-Answer {
   display: flex;
-  /* flex-direction: column; */
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   height: 200px;
+  margin: 0 1rem;
 }
 
 .TestCard-img {
@@ -29,14 +28,32 @@
   font-size: 20px;
 }
 
-
-
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
   background-color: #EC9CD3 !important;
   width: 250px !important;
   height: 50px !important;
 }
 
+.test-box {
+  display: flex;
+}
 
+/* 반응형 */
+@media (max-width: 768px) {
+  .TestCard-Card {
+    width: 80vw;
+  }
 
+  .test-box {
+    flex-direction: column;
+  }
 
+  .bubbly-button {
+    margin: 0.5rem 0 !important;
+    padding: 0.25rem 2rem !important;
+  }
+
+  .TestCard-Answer {
+    height: auto;
+  }
+}

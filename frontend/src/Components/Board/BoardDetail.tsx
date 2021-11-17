@@ -226,6 +226,9 @@ function BoardDetail(props: any) {
             <span className="detail-webtoon-title">{data["webtoon_title"]}</span>
           </div>
           <div className="pat-bottom">{data["title"]}</div>
+          <div className="pat-top">
+            <span className="detail-platform mx-3">{data["writer"]}</span>
+          </div>
         </span>
         <span className="btns detail-btns">
           <Button className="mx-2 small-btn" variant="secondary" onClick={goUpdate}>수정</Button>       
@@ -233,7 +236,7 @@ function BoardDetail(props: any) {
         </span>
       </div>
       <div className="detail-content m-3"><pre id="pre-font">{data["contents"]}</pre></div>
-
+      <hr />
       <div className="m-3">댓글  {comment_length}</div>
 
       <table className="table detail-comment m-3">
