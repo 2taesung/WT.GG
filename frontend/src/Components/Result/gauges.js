@@ -7,20 +7,23 @@ $(document).ready(function () {
 
 function gauges() {
   $(".gauge").each(function (index) {
-    var val = $(this).data("value");
+    var val = $(".gauge-cnt").text();
+    console.log("val")
+    console.log(val)
     var ceil = $(this).data("ceil");
+    
     var d = 0;
-
-    if (val > ceil) {
-      d = 180;
-    } else {
-      d = Math.round((val * 180) / ceil);
-    }
 
     var $elem = $(this).find(".gauge-indicator");
     var $counter = $(this).find(".gauge-cnt");
     var $ceil_indicator = $(this).find(".gauge-ceil");
-    $ceil_indicator.text("∞ " + ceil);
+    $ceil_indicator.text("/" + ceil);
+    if (val > ceil) {
+      d = 180;
+    } else {
+      d = (val * 180) / ceil;
+    }
+
 
     $({ deg: -180 }).animate(
       { deg: d - 180 },
