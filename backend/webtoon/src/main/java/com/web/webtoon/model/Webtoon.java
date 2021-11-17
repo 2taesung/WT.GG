@@ -19,10 +19,10 @@ public class Webtoon {
 	private float score;
 	private String artist;
 	
-	public float getTotal() {
+	public float getScore() {
 		return score;
 	}
-	public void setTotal(float score) {
+	public void setScore(float score) {
 		this.score = score;
 	}
 	public int getId() {
@@ -83,6 +83,9 @@ public class Webtoon {
 	public String getArtist() {
 		return artist;
 	}
+	/**
+	 * @param artist
+	 */
 	public void setArtist(String artist) {
 		this.artist = artist;
 	}

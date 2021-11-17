@@ -19,23 +19,23 @@
 	
 	<select id="getTestResult" parameterType="Map" resultType="Webtoon">
 		
-		select c.id as characteristic, c.drawing_style, c.humor, c.romance_ratio, c.genre as genre_score, c.deployment_speed, c.material_novelty, c.webtoon_id as id,
+		select c.id as characteristic, c.drawing_style, c.humor, c.romance_ratio, c.genre_score, c.deployment_speed, c.material_novelty, c.webtoon_id as id,
 			(c.drawing_style - #{drawing_style} + c.humor - #{humor} + c.romance_ratio - #{romance_ratio} 
-			+ c.genre - #{genre} + c.deployment_speed - #{deployment_speed} + c.material_novelty - #{material_novelty}) as total,
+			+ c.genre_score - #{genre} + c.deployment_speed - #{deployment_speed} + c.material_novelty - #{material_novelty}) as result,
 			<![CDATA[
 			(case
 				when (c.drawing_style - #{drawing_style} + c.humor - #{humor} + c.romance_ratio - #{romance_ratio} 
-			+ c.genre - #{genre} + c.deployment_speed - #{deployment_speed} + c.material_novelty - #{material_novelty}) < 0
+			+ c.genre_score - #{genre} + c.deployment_speed - #{deployment_speed} + c.material_novelty - #{material_novelty}) < 0
 			    then (c.drawing_style - #{drawing_style} + c.humor - #{humor} + c.romance_ratio - #{romance_ratio} 
-			+ c.genre - #{genre} + c.deployment_speed - #{deployment_speed} + c.material_novelty - #{material_novelty}) * -1
+			+ c.genre_score - #{genre} + c.deployment_speed - #{deployment_speed} + c.material_novelty - #{material_novelty}) * -1
 			    else (c.drawing_style - #{drawing_style} + c.humor - #{humor} + c.romance_ratio - #{romance_ratio} 
-			+ c.genre - #{genre} + c.deployment_speed - #{deployment_speed} + c.material_novelty - #{material_novelty})
-			end) as score
+			+ c.genre_score - #{genre} + c.deployment_speed - #{deployment_speed} + c.material_novelty - #{material_novelty})
+			end) as result_done
 			]]>,
-			w.title, w.link, w.image_link, w.genre, w.story, w.platform_id,  w.artist
+			w.title, w.link, w.image_link, w.genre, w.story, w.platform_id,  w.artist, w.score
 		from characteristic c, webtoon w
 		where c.webtoon_id = w.id 
-		order by score asc
+		order by result_done asc
 		limit 1;
 	</select>
 </mapper>
