@@ -18,8 +18,8 @@ function Result() {
   let id = useParams();
   let webtoon_id:any = id;
   let w_id = webtoon_id['id'];
-  w_id = 472
   // console.log(w_id)
+  // w_id = 472
   
   const fetchWebtoonDetail = async() => {
     await axios.get(`http://localhost:8080/webtoon/detail?id=${w_id}`)
@@ -87,7 +87,7 @@ function Result() {
       </div>
 
       <div className="result-bottom">
-        <ResultBottom />
+        <ResultBottom webtoonInfo={webtoonInfo}/>
       </div>
 
       <div className="mb-result-btns">

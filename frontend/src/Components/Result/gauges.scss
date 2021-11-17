@@ -1,0 +1,95 @@
+// Colors
+$base_color: #f5f5f5;
+$color_blue: #4376c7;
+$color_red: #ed3e15;
+$color_green: #aebf18;
+$color_orange: #fca106;
+
+// Gauge Settings
+$width: 250px;
+$height: 125px;
+$thickness: 30px;
+
+
+
+.gauge {
+  margin: 0 auto 2rem auto;
+  height: $height;
+  width: $width;
+  position: relative;
+  overflow: hidden;
+  .gauge-indicator {
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: $height;
+    width: $width;
+    border-radius: $width $width 0 0;
+    transform-origin: bottom center;
+    backface-visibility: hidden;
+    transform: rotate(-180deg);
+  }
+
+  .gauge-background {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: $height;
+    width: $width;
+    border-radius: $width $width 0 0;
+    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.35);
+    background: #fff;
+  }
+
+  .gauge-center {
+    z-index: 4;
+    position: absolute;
+    bottom: 0;
+    right: $thickness;
+    left: $thickness;
+    height: calc(#{$height} - #{$thickness});
+    width: calc(#{$width} - 2 * #{$thickness});
+    border-radius: calc(#{$width} - 2 * #{$thickness})
+      calc(#{$width} - 2 * #{$thickness}) 0 0;
+    background: $base_color;
+  }
+
+  .gauge-value {
+    z-index: 5;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+    line-height: 1;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #232323;
+    span.gauge-cnt {
+      display: block;
+      font-size: 1.75rem;
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1;
+    }
+    span.gauge-ceil {
+      display: block;
+    }
+  }
+  &.red .gauge-indicator {
+    background: $color_red;
+  }
+}
+
+@keyframes slidein {
+  from {
+    transform: rotate(-180deg);
+  }
+  to {
+    transform: rotate(-58deg);
+  }
+}

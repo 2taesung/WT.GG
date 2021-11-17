@@ -79,6 +79,13 @@
   width: 40vw;
   margin: 0;
 }
+.result-top-left {
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+  height: 30vw;
+  margin: 0;
+}
 
 .result-bottom-contents {
   display: flex;
