@@ -39,7 +39,7 @@ function Result() {
   // w_id = 472
   useEffect(()=> {
     axios
-      .get(`http://54.166.95.144/api/detail?id=${w_id}`)
+      .get(`http://54.166.95.144/api/webtoon/detail?id=${w_id}`)
       .then(res => {
             setwebtoonInfo({
               "id": res.data.webtoonDetail["id"], 
