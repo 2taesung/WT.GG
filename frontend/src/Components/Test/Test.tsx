@@ -16,7 +16,7 @@ function Test() {
     if (i===6) {
       console.log(arr)
     
-      const url = "http://localhost:8080/webtoon/test"
+      const url = "http://54.166.95.144/api/webtoon/test"
       
       axios.post(url, arr)
       .then(res => {
