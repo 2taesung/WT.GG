@@ -1,35 +1,34 @@
 import React, { useState, useEffect } from "react";
 // import ResultBottom from "./ResultBottom";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import "./Result.css";
-
 import "./Result.css";
 import "./gauges.scss"
 import "./gauges.js"
-
 import "./fourgauges.scss"
-
-
 
 function Result() {
   // const chkImg = "/image/chk.png"
   const [ loading, setLoading ] = useState("load");
 
-  let [webtoonInfo, setwebtoonInfo] = useState({"id": 485, "platform_id": 1, "title": "참교육", 
-  "link": "https://comic.naver.com/webtoon/list?titleId=758037",
-  "image_link": "/image/동그라미.jpg",
-  "genre": "스토리, 액션", 
-  "story": "줄거리", 
-  "drawing_style": 0,
-  "humor": 0,
-  "romance_ratio": 0,
-  "genre_score": 0,
-  "deployment_speed": 0,
-  "material_novelty": 0,
-  "artist": "채용택 / 한가람", 
-  "score":9});
+  let [webtoonInfo, setwebtoonInfo] = useState({
+    "id": 0, "platform_id": 0, "title": "", 
+    "link": "",
+    "image_link": "",
+    "genre": "", 
+    "story": "", 
+    "drawing_style": 0,
+    "humor": 0,
+    "romance_ratio": 0,
+    "genre_score": 0,
+    "deployment_speed": 0,
+    "material_novelty": 0,
+    "artist": "", 
+    "score": 0,
+    "rate": 0
+  });
   
 
   let id = useParams();
@@ -57,7 +56,8 @@ function Result() {
               "material_novelty": res.data.webtoonDetail["material_novelty"],
               "story": res.data.webtoonDetail["story"],  
               "artist": res.data.webtoonDetail["artist"],  
-              "score":res.data.webtoonDetail["score"], 
+              "score":Math.round(res.data.webtoonDetail["score"]*100)/100, 
+              "rate":res.data.webtoonDetail["score"]*10
             })
             console.log(webtoonInfo)
             setLoading("endLoad")
@@ -68,6 +68,7 @@ function Result() {
           });
 
   }, [w_id]);
+
 
   // console.log("arr")
   // console.log(arr)
@@ -90,8 +91,11 @@ function Result() {
 
 
   // console.log(w_score)
-  
+
   const loading_img = "/image/loading.gif";
+  const star = "/image/star.png";
+  const star_f = "/image/star_f.png";
+
   return (
     <div className="result">
       <div className={loading === "load" ? "loading" : "hide"}>
@@ -99,7 +103,7 @@ function Result() {
       </div>
       <div className="result-top">
         <div className="result-top-left">
-          <img src={ webtoonInfo['image_link'] } alt="" />
+          <img src={ webtoonInfo['image_link'] } id="result-webtoon-img" alt="" />
         </div>
         <div className="result-top-right">
           <div><h3>{ webtoonInfo["title"] }</h3></div>
@@ -117,33 +121,53 @@ function Result() {
           </div>
 
           <div className="result-btns">
-            <button className="result-btn" onClick={goLink}><h5>보러가기</h5></button>
-            <button className="result-btn"><h5>팬 게시판</h5></button>
+            <button className="result-btn" onClick={() => goLink}><h5>보러가기</h5></button>
+            <Link to="/board">
+              <button className="result-btn"><h5>팬 게시판</h5></button>
+            </Link>
           </div>
         </div>
       </div>
       <div className="mb-result-btns">
-        <button className="result-btn" onClick={goLink}><h5>보러가기</h5></button>
-        <button className="result-btn"><h5>팬 게시판</h5></button>
+        <button className="result-btn" onClick={() => goLink}><h5>보러가기</h5></button>
+        <Link to="/board">
+          <button className="result-btn"><h5>팬 게시판</h5></button>
+        </Link>
       </div>
 
       <div className="result-bottom">
         <div className="result-bottom-container">
           
-          <div className="gauge red" data-value={webtoonInfo['score']} data-ceil="10">
-            <div className="gauge-value">
-              <span className="gauge-cnt">{webtoonInfo['score']}</span>
-              <span className="gauge-ceil"></span>
+          <div className="rating">
+            <div className="rating-bg">
+              <img src={star} alt="star" className="rating-s" />
+              <img src={star} alt="star" className="rating-s" />
+              <img src={star} alt="star" className="rating-s" />
+              <img src={star} alt="star" className="rating-s" />
+              <img src={star} alt="star" className="rating-s" />
             </div>
-            <div className="gauge-center"></div>
-            <div className="gauge-indicator"></div>
-            <div className="gauge-background"></div>
+            <div
+              className="rating-body" 
+              style={{
+                width: `${webtoonInfo['rate']}%`,
+                height: "100%",
+                overflow: "hidden"
+            }}>
+              <div className="rating-star">
+                <img src={star_f} alt="star_f" className="rating-s" />
+                <img src={star_f} alt="star_f" className="rating-s" />
+                <img src={star_f} alt="star_f" className="rating-s" />
+                <img src={star_f} alt="star_f" className="rating-s" />
+                <img src={star_f} alt="star_f" className="rating-s" />
+              </div>
+            </div>            
           </div>
-          <br />
-          <br />
+          
+          <div className="result-score">
+            <h5 className="fb">{webtoonInfo["score"]}/10</h5>
+          </div>
 
           <div className="set-size charts-container">
-
             <div className={class1}>
               <span className="label">그림체지수<span className="smaller"></span></span>
               <div className="pie">
@@ -197,14 +221,9 @@ function Result() {
               </div>
               <div className="shadow"></div>
             </div>
-          </div>
-
-
-          
+          </div>          
         </div>
       </div>
-
-
     </div>
   )
 };
