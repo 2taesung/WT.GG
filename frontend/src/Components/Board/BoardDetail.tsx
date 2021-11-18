@@ -26,7 +26,7 @@ function BoardDetail(props: any) {
 
   // API 공간 //
   const fetchBoardDetail = async() => {
-    const url = `http://localhost:8080/board/content?id=${id}`
+    const url = `http://54.166.95.144/api/board/content?id=${id}`
     await axios.get(url)
     .then(res => {
       setData(res.data.content)
@@ -38,7 +38,7 @@ function BoardDetail(props: any) {
   };
 
   const fetchChkPassword = async(data: any) => {
-    const url = "http://localhost:8080/board/checkpwd"
+    const url = "http://54.166.95.144/api/board/checkpwd"
     await axios.post(url, data)
     .then(res => {
       if (res.data.message === "SUCCESS") {
@@ -54,7 +54,7 @@ function BoardDetail(props: any) {
   };
 
   const fetchDelete = async(data: any) => {
-    const url = "http://localhost:8080/board/delete"
+    const url = "http://54.166.95.144/api/board/delete"
     await axios.delete(url, {data: data})
     .then(res => {
       if (res.data.message === "SUCCESS") {
@@ -71,7 +71,7 @@ function BoardDetail(props: any) {
   };
   
   const fetchCreateComment = async(data: any) => {
-    const url = "http://localhost:8080/board/comment/write"
+    const url = "http://54.166.95.144/api/board/comment/write"
     await axios.post(url, data)
     .then(res => {
       alert("댓글이 작성되었습니다.")
@@ -85,7 +85,7 @@ function BoardDetail(props: any) {
   };
 
   const fetchDeleteComment = async(data: any) => {
-    const url = "http://localhost:8080/board/comment/delete"
+    const url = "http://54.166.95.144/api/board/comment/delete"
     await axios.delete(url, {data: data})
     .then(res => {
       if (res.data.message === "SUCCESS") {

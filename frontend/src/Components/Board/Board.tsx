@@ -17,7 +17,7 @@ function Board() {
 
   useEffect(() => {
     const fetchBoard = async () => {
-      const url = "http://localhost:8080/board/list";
+      const url = "http://54.166.95.144/api/board/list";
   
       await axios.get(url)
       .then(res => {

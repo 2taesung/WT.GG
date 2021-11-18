@@ -19,7 +19,7 @@ function BoardUpdate(props: any) {
 
   // API 공간 //
   const fetchBoardDetail = async() => {
-    const url = `http://localhost:8080/board/content?id=${id}`
+    const url = `hhttp://54.166.95.144/api/board/content?id=${id}`
     await axios.get(url)
     .then(res => {
       setInfo({
@@ -38,7 +38,7 @@ function BoardUpdate(props: any) {
   };
 
   const fetchUpdate = async(data: any) => {
-    const url = "http://localhost:8080/board/modify"
+    const url = "http://54.166.95.144/api/board/modify"
     await axios.put(url, data)
     .then(res => {
       alert("수정이 완료되었습니다.")
