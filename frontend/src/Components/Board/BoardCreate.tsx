@@ -92,7 +92,7 @@ class BoardCreate extends React.Component {
 
   // 게시물 작성 api 연동
   fetchCreateBoard = async(data: any) => {
-    const url = "http://localhost:8080/board/write"
+    const url = "http://54.166.95.144/api/board/write"
 
     await axios.post(url, data)
     .then(res => {
