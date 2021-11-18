@@ -60,7 +60,7 @@ $label-font-size-redo: $default-size * 8;
 
 
 .set-size {
-  font-size: 12em;
+  font-size: 9em;
 }
 
 .charts-container {
@@ -75,7 +75,7 @@ $label-font-size-redo: $default-size * 8;
 .pie-wrapper {
   @include size($default-size, $default-size);
   float: left;
-  margin: 15px;
+  margin: 2rem;
   position: relative;
   
   &:nth-child(3n + 1) {

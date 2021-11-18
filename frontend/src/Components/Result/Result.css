@@ -12,8 +12,8 @@
 
 #result-webtoon-img {
   background-color: lightgray;
-  width: 35vh;
   height: 35vh;
+  width: auto;
 }
 
 .result-top-right {
@@ -83,8 +83,8 @@
 .result-top-left {
   display: flex;
   flex-direction: column;
-  width: 20vw;
-  height: 20vw;
+  width: auto;
+  height: 35vh;
   margin: 0;
 }
 
@@ -113,6 +113,35 @@
   display: none;
 }
 
+.rating {
+  position: relative;
+}
+
+.rating-bg {
+  display: flex;
+}
+
+.rating-body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.rating-star {
+  display: flex;
+}
+
+.rating-s {
+  height: 3rem !important;
+  width: 3rem !important;
+  margin: 0 0.2rem;
+}
+
+.result-score {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 
 /* 반응형 */
 @media (max-width: 768px) {
@@ -121,18 +150,24 @@
   }
 
   .result-top {
+    margin-top: 2rem;
     flex-direction: column;
     height: auto;
   }
 
   #result-webtoon-img {
     width: 20vh;
-    height: 20vh;
+    height: auto;
     margin-bottom: 0.5rem;
+  }
+  
+  .result-top-left {
+    height: auto;
   }
 
   .result-top-right {
     width: 90vw;
+    height: 20vh;
   }
 
   .result-avatar {
@@ -171,7 +206,7 @@
     display: flex;
     width: 100%;
     justify-content: space-evenly;
-    margin-top: 2rem;
+    margin-top: 0.5rem;
     padding: 0 1rem;
   }
 
@@ -181,5 +216,26 @@
 
   .result-btn h5 {
     font-size: 1.25rem;
+  }  
+
+  .result-bottom-container {
+    margin-top: 1rem;
+  }
+
+  .set-size {
+    font-size: 8rem !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pie-wrapper {
+    margin: 1rem !important;
+  }
+
+  .rating-s {
+    height: 2rem !important;
+    width: 2rem !important;
+    margin: 0 0.2rem;
   }  
 }
