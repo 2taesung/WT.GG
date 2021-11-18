@@ -118,7 +118,7 @@ function Result() {
           </div>
 
           <div className="result-btns">
-            <button className="result-btn" onClick={() => goLink}><h5>보러가기</h5></button>
+            <button className="result-btn" onClick={goLink}><h5>보러가기</h5></button>
             <Link to="/board">
               <button className="result-btn"><h5>팬 게시판</h5></button>
             </Link>
@@ -126,7 +126,7 @@ function Result() {
         </div>
       </div>
       <div className="mb-result-btns">
-        <button className="result-btn" onClick={() => goLink}><h5>보러가기</h5></button>
+        <button className="result-btn" onClick={goLink}><h5>보러가기</h5></button>
         <Link to="/board">
           <button className="result-btn"><h5>팬 게시판</h5></button>
         </Link>
