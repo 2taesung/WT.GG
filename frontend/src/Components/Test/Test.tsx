@@ -14,17 +14,17 @@ function Test() {
   let [arr, arr변경] = useState<any[]>([]);
   function 투표(i:number, a:number) {
     if (i===6) {
-      console.log(arr)
+      // console.log(arr)
     
       const url = "http://54.166.95.144/api/webtoon/test"
       
       axios.post(url, arr)
       .then(res => {
-        console.log(res)
+        // console.log(res)
         if (res.data["message"] === "SUCCESS") {
-          console.log("테스트 정보가 입력되었습니다.")
+          // console.log("테스트 정보가 입력되었습니다.")
           let webtoon_id = res.data["result_webtoon_id"]
-          console.log(webtoon_id)
+          // console.log(webtoon_id)
           
           window.location.replace(`/result/${webtoon_id}`)
         }
@@ -32,7 +32,7 @@ function Test() {
       .catch(err => {
         console.log(err.response.data.message)
         alert("실패했습니다.")
-        console.log(arr)
+        // console.log(arr)
       })
     } else {
       i변경(i+1);
@@ -40,7 +40,7 @@ function Test() {
       var newArray = [...arr];
       newArray.push(a)
       arr변경(newArray)
-      console.log(newArray)
+      // console.log(newArray)
       }
     }
 

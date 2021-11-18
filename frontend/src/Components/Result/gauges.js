@@ -8,8 +8,8 @@ $(document).ready(function () {
 function gauges() {
   $(".gauge").each(function (index) {
     var val = $(".gauge-cnt").text();
-    console.log("val")
-    console.log(val)
+    // console.log("val")
+    // console.log(val)
     var ceil = $(this).data("ceil");
     
     var d = 0;

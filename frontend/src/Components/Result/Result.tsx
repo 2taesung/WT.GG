@@ -59,12 +59,12 @@ function Result() {
               "score":Math.round(res.data.webtoonDetail["score"]*100)/100, 
               "rate":res.data.webtoonDetail["score"]*10
             })
-            console.log(webtoonInfo)
+            // console.log(webtoonInfo)
             setLoading("endLoad")
           })
           .catch(err => {
-            console.log("실패했습니다.")
-            console.log(err)
+            // console.log("실패했습니다.")
+            console.log(err.response)
           });
 
   }, [w_id]);
@@ -83,13 +83,10 @@ function Result() {
   const class4 = `pie-wrapper progress-${webtoonInfo["genre_score"]} style-2`
   const class5 = `pie-wrapper progress-${webtoonInfo["deployment_speed"]} style-2`
   const class6 = `pie-wrapper progress-${webtoonInfo["material_novelty"]} style-2`
-  console.log(class1)
-  
-  console.log("다음")
-  console.log(webtoonInfo['score'])
+  // console.log(class1)  
+  // console.log("다음")
+  // console.log(webtoonInfo['score'])
   // console.log(String(Math.floor(webtoonInfo["score"])))
-
-
   // console.log(w_score)
 
   const loading_img = "/image/loading.gif";

@@ -30,7 +30,7 @@ function Board() {
         setLoading("endLoad")
       })
       .catch(err => {
-        console.log(err)
+        console.log(err.response)
       })
     }
 
